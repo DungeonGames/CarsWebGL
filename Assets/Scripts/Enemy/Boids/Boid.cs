@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Boid : MonoBehaviour
 {
     [SerializeField] private BoidSettings _settings;
@@ -25,11 +26,13 @@ public class Boid : MonoBehaviour
     private float _minSpeedOnStart = 5f;
     private float _maxSpeedOnStart = 10f;
     private bool _isHoleTrapCath = false;
+    private Rigidbody _rigidbody;
     private Transform cachedTransform;
     private Transform _target;
 
     private void Awake()
     {
+        _rigidbody = GetComponent<Rigidbody>();
         cachedTransform = transform;
         SetMinMaxSpeed(_minSpeedOnStart, _maxSpeedOnStart);
     }
@@ -53,6 +56,7 @@ public class Boid : MonoBehaviour
 
     public void HoleTrapCath(Transform target)
     {
+        _rigidbody.isKinematic = true;
         _isHoleTrapCath = true;
         SetTarget(target);
     }
