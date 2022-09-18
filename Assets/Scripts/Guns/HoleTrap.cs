@@ -9,7 +9,7 @@ public class HoleTrap : MonoBehaviour
 
     private Animator _animator;
     private bool _isActivated = false;
-    private float _delayForClosed = 6f;
+    private float _delayForClosed = 2f;
     private float _delayForActivated = 1f;
     private const string OpenGate = "OpenGate";
     private const string CloseGate = "CloseGate";
