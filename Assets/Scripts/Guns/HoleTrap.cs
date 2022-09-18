@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -8,7 +9,10 @@ public class HoleTrap : MonoBehaviour
 
     private Animator _animator;
     private bool _isActivated = false;
+    private float _delayForClosed = 6f;
+    private float _delayForActivated = 1f;
     private const string OpenGate = "OpenGate";
+    private const string CloseGate = "CloseGate";
 
     private void Start()
     {
@@ -17,22 +21,36 @@ public class HoleTrap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Car car))
+        if (_isActivated == false)
         {
-            _animator.SetBool(OpenGate, true);
-            _isActivated = true;
-            _playerWall.enabled = true;
+            if (other.TryGetComponent(out Car car))
+            {
+                _animator.SetBool(OpenGate, true);
+                _isActivated = true;
+                _animator.SetBool(OpenGate, true);
+                _animator.SetBool(CloseGate, false);
+                StartCoroutine(TimerForCloseGate());
+                _playerWall.enabled = true;
+            }
         }
 
         if (_isActivated)
+        {
             if (other.TryGetComponent(out Boid enemy))
                 enemy.HoleTrapCath(_target);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private IEnumerator TimerForCloseGate()
     {
-        if (_isActivated)
-            if (collision.gameObject.TryGetComponent(out Boid enemy))
-                enemy.HoleTrapCath(_target);
+        yield return new WaitForSeconds(_delayForClosed);
+
+        _animator.SetBool(CloseGate, true);
+        _animator.SetBool(OpenGate, false);
+
+        yield return new WaitForSeconds(_delayForActivated);
+
+        _playerWall.enabled = false;
+        _isActivated = false;
     }
 }
