@@ -19,7 +19,7 @@ public class TurretGate : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (_isActivated == false)
         {

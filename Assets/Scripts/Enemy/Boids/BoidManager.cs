@@ -11,7 +11,7 @@ public class BoidManager : MonoBehaviour {
         boids = FindObjectsOfType<Boid> ();
     }
 
-    void Update () {
+    void LateUpdate () {
         if (boids != null) {
 
             int numBoids = boids.Length;
