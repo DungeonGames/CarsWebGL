@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 215455257900668285}
   - component: {fileID: 2381610306822484739}
   - component: {fileID: 219449429217126989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightEye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3167308666043606731}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RigRArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7954600418012355357}
   - component: {fileID: 6628236620574522244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toon Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 333362349003262859}
   - component: {fileID: 3946433141612962267}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 9081393597222853233}
   - component: {fileID: 8673638346034659817}
   - component: {fileID: 7497853244695725620}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: OrangeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6247750650540636970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RigHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 157803215507209144}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RigRArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 2522683344545437206}
   - component: {fileID: 5536545227249217035}
   - component: {fileID: 1282542293955778905}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 6653908449230613903}
   - component: {fileID: 1090731939182888006}
   - component: {fileID: 5979688635093160095}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightEye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8023313410849263032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RigJawBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6239435603046175469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RigLArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 842876630745760452}
   - component: {fileID: 3931684280804119488}
   - component: {fileID: 7462834217358724097}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 6345287840581549718}
   - component: {fileID: 6345287840581549713}
   - component: {fileID: 6345287840581549712}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8651557926982359829}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6291195724239011754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RigLArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -919,7 +919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6650509177868669583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RigJawUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

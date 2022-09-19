@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -8,14 +6,14 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected Bullet BulletTemplate;
     [SerializeField] protected ParticleSystem ShootParticle;
 
+    [SerializeField] private float _delayPerShot = 0.7f;
     [SerializeField] private Upgrade _upgrade;
     [SerializeField] private GameUiHandler _gameStartHandler;
     [SerializeField] private Transform _body;
 
-    private float _delayPerShot = 0.7f;
     private float _decreaseDelayPerShot = 0.1f;
     private float _timeRemaining;
-    private bool _inGame = false;
+    private bool _canFire = false;
     private Enemy _currentTraget;
 
     public Upgrade GunUpgrade => _upgrade;
@@ -27,22 +25,32 @@ public abstract class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (_inGame)
+        if (_canFire)
             PrepareToShoot();
     }
 
     private void OnEnable()
     {
-        _gameStartHandler.GameStart += OnGameStarted;
-        _gameStartHandler.GameEnd += OnGameEnded;
-        _upgrade.Buyed += OnUpgradeBuyed;
+        if (_gameStartHandler != null)
+        {
+            _gameStartHandler.GameStart += StartFire;
+            _gameStartHandler.GameEnd += StopFire;
+        }
+
+        if (_upgrade != null)
+            _upgrade.Buyed += OnUpgradeBuyed;
     }
 
     private void OnDisable()
     {
-        _gameStartHandler.GameStart -= OnGameStarted;
-        _gameStartHandler.GameEnd -= OnGameEnded;
-        _upgrade.Buyed -= OnUpgradeBuyed;
+        if (_gameStartHandler != null)
+        {
+            _gameStartHandler.GameStart -= StartFire;
+            _gameStartHandler.GameEnd -= StopFire;
+        }
+
+        if (_upgrade != null)
+            _upgrade.Buyed -= OnUpgradeBuyed;
     }
 
     private void OnTriggerStay(Collider other)
@@ -58,6 +66,10 @@ public abstract class Gun : MonoBehaviour
     }
 
     public abstract void Shoot(Enemy enemy);
+
+    public void StopFire() => _canFire = false;
+
+    public void StartFire() => _canFire = true;
 
     private void OnUpgradeBuyed() => _delayPerShot -= _decreaseDelayPerShot;
 
@@ -78,10 +90,6 @@ public abstract class Gun : MonoBehaviour
             }
         }
     }
-
-    private void OnGameEnded() => _inGame = false;
-
-    private void OnGameStarted() => _inGame = true;
 
     private void OnDying(Enemy enemy)
     {
