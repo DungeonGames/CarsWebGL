@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private Joystick _joystick;
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationSpeed;
 
