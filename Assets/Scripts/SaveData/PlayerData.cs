@@ -4,6 +4,7 @@ namespace SaveData
     public class PlayerData
     {
         public bool IsFirstRun = true;
+        public bool IsKeyboardInput = false;
         public int CurrentWave;
         public int Coins;
         public int Gems;
