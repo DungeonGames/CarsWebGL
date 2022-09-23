@@ -39,7 +39,7 @@ public class EnemyMaterialSeter : MonoBehaviour
         StartCoroutine(SwithHitMaterial());
     }
 
-    private void OnPrepareToDie()
+    private void OnPrepareToDie(Enemy enemy)
     {
         StartCoroutine(SwitchDieMaterial());
     }

@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1539140018321339430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5505458481546312653}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TurretGates
   m_TagString: Untagged
   m_Icon: {fileID: 0}

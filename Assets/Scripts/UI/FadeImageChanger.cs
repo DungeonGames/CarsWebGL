@@ -5,25 +5,38 @@ using DG.Tweening;
 public class FadeImageChanger : MonoBehaviour
 {
     [SerializeField] private Image _lowHealtTrigger;
-    [SerializeField] private Car _car;
+    [SerializeField] private PlayerBag _playerBag;
 
-    [SerializeField] private float _toFade = 100f;
-    [SerializeField] private float _fadeSpeed = 1f;
+    private const float ToFade = 0.5f;
+    private const float FadeSpeed = 1f;
+
+    private Car _car;
 
     private void OnEnable()
     {
-        _car.LowHealh += OnLowHealt;
+        _playerBag.CarChanged += OnCarChanged;
     }
 
     private void OnDisable()
     {
+        _playerBag.CarChanged -= OnCarChanged;
         _car.LowHealh -= OnLowHealt;
     }
 
+    private void OnCarChanged(Car car)
+    {
+        if (_car != null)
+        {
+            _car.LowHealh -= OnLowHealt;
+        }
+
+        _car = car;
+        _car.LowHealh += OnLowHealt;
+    }
     private void OnLowHealt()
     {
         _lowHealtTrigger.gameObject.SetActive(true);
-        _lowHealtTrigger.DOFade(_toFade, _fadeSpeed).SetLoops(-1, LoopType.Yoyo);
+        _lowHealtTrigger.DOFade(ToFade, FadeSpeed).SetLoops(-1, LoopType.Yoyo);
     }
 
 }

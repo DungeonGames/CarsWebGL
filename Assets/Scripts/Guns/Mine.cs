@@ -37,7 +37,9 @@ public class Mine : MonoBehaviour
         if (other.TryGetComponent(out Enemy enemy))
         {
             if (enemy.IsAlive)
+            {
                 enemy.TakeDamage(_damage);
+            }
         }
     }
 
@@ -47,7 +49,7 @@ public class Mine : MonoBehaviour
         Instantiate(_explisionParticle, _startPositionParticle, Quaternion.identity);
         foreach (Collider hit in colliders)
         {
-            Rigidbody rigidbody = hit.GetComponent<Rigidbody>();          
+            Rigidbody rigidbody = hit.GetComponent<Rigidbody>();
 
             if (rigidbody != null)
             {

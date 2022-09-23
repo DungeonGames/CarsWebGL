@@ -47,9 +47,9 @@ public class LevelGenerator : MonoBehaviour
 
         _isFirstRun = dataFirstRun.IsFirstRun;
 
-        if (dataCurrentWave.CurrentWave > _waves.Count)
+        if (dataCurrentWave.CurrentWave >= _waves.Count)
         {
-            int index = Random.Range(1, _waves.Count);
+            int index = Random.Range(0, _waves.Count);
             WaveChange?.Invoke(_waves[index]);
         }
         else

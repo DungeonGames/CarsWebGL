@@ -5,12 +5,14 @@ public class Car : MonoBehaviour
 {
     [SerializeField] private float _health;
     [SerializeField] private Upgrade _upgrade;
+    [SerializeField] private float _maxSpeed;
 
     private float _currentHealth;
     private float _lowHealthValueTrigger;
-    private float _increaseMaxHealth = 50f;
+    private float _increaseMaxHealth = 5f;
 
     public Upgrade CarUpgrade => _upgrade;
+    public float MaxSpeed => _maxSpeed;
 
     public event UnityAction LowHealh;
     public event UnityAction Died;
@@ -24,11 +26,13 @@ public class Car : MonoBehaviour
     private void OnEnable()
     {
         _upgrade.Buyed += OnUpgradeBuyed;
+        _upgrade.CurrentLevelChanged += OnCurrentLevelChanged;
     }
 
     private void OnDisable()
     {
         _upgrade.Buyed -= OnUpgradeBuyed;
+        _upgrade.CurrentLevelChanged -= OnCurrentLevelChanged;
     }
 
     public void TakeDamage(float value)
@@ -60,6 +64,12 @@ public class Car : MonoBehaviour
     private void OnUpgradeBuyed()
     {
         _health += _increaseMaxHealth;
+        UpdateHealt();
+    }
+
+    private void OnCurrentLevelChanged(int level)
+    {
+        _health += _increaseMaxHealth * level;
         UpdateHealt();
     }
 }

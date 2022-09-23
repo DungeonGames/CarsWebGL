@@ -8,8 +8,7 @@ public class UpgradeView : MonoBehaviour
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _price;
-    [SerializeField] private TMP_Text _currentQuanity;
-    [SerializeField] private TMP_Text _maxQuanity;
+    [SerializeField] private TMP_Text _currentLevel;
     [SerializeField] private Button _sellButton;
 
     private Upgrade _upgrade;
@@ -34,18 +33,10 @@ public class UpgradeView : MonoBehaviour
         _name.text = upgrade.UpgradeName.ToString();
         _icon.sprite = upgrade.ImageUpgrade;
         _price.text = upgrade.Price.ToString();
-        _currentQuanity.text = upgrade.CurrentQuanity.ToString();
-        _maxQuanity.text = upgrade.MaxQuanity.ToString();
+        _currentLevel.text = $"Level: {upgrade.CurrentLevel}";
     }
 
     public void DeactivateButton() => _sellButton.interactable = false;
-
-    public void UpdateInteractable()
-    {
-        if(_upgrade.CanSellUpgrade() == false)
-            _sellButton.interactable = false;
-
-    }
 
     private void OnButtonClick()
     {
