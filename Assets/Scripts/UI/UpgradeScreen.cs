@@ -1,53 +1,67 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Wallet))]
 public class UpgradeScreen : MonoBehaviour
 {
     [SerializeField] private HorizontalLayoutGroup _container;
-    [SerializeField] private Car _car;
-    [SerializeField] private Gun _gun;
+    [SerializeField] private PlayerBag _playerBag;
     [SerializeField] private UpgradeView _template;
-    [SerializeField] private Wallet _wallet;
 
-    private List<UpgradeView> _upgradeViews = new List<UpgradeView>();
+    private Wallet _wallet;
+    private UpgradeView _carUpgradeView;
+    private UpgradeView _gunUpgradeView;
+
+    private void OnEnable()
+    {
+        _playerBag.CarChanged += OnCarChanged;
+        _playerBag.GunChanged += OnGunChanged;
+    }
 
     private void Start()
     {
+        _wallet = GetComponent<Wallet>();
         InstantiateUpgrades();
     }
 
     private void OnDisable()
     {
-        foreach (var view in _upgradeViews)
-        {
-            view.SellButtonClick -= OnSellButtonClick;
-        }
+        _playerBag.CarChanged -= OnCarChanged;
+        _playerBag.GunChanged -= OnGunChanged;
+        _carUpgradeView.SellButtonClick -= OnSellButtonClick;
+        _gunUpgradeView.SellButtonClick -= OnSellButtonClick;
+    }
+
+    private void OnCarChanged(Car car)
+    {
+        _carUpgradeView.Render(car.CarUpgrade);
+        UpdateInteractableButton(_carUpgradeView, car.CarUpgrade);
+    }
+
+    private void OnGunChanged(Gun gun)
+    {
+        _gunUpgradeView.Render(gun.GunUpgrade);
+        UpdateInteractableButton(_gunUpgradeView, gun.GunUpgrade);
     }
 
     private void InstantiateUpgrades()
     {
-        AddUpgrade(_gun.GunUpgrade);
-        AddUpgrade(_car.CarUpgrade);
-        UpdateInteractableButtons();
+        AddUpgrades();
     }
 
-    private void AddUpgrade(Upgrade upgrade)
+    private void AddUpgrades()
     {
-        UpgradeView view = Instantiate(_template, _container.transform);
-        view.SellButtonClick += OnSellButtonClick;
-        view.Render(upgrade);
-        _upgradeViews.Add(view);
+        _gunUpgradeView = Instantiate(_template, _container.transform);
+        _carUpgradeView = Instantiate(_template, _container.transform);
+        _gunUpgradeView.SellButtonClick += OnSellButtonClick;
+        _carUpgradeView.SellButtonClick += OnSellButtonClick;
     }
 
-    private void UpdateInteractableButtons()
+    private void UpdateInteractableButton(UpgradeView upgradeView, Upgrade upgrade)
     {
-        foreach (var view in _upgradeViews)
+        if (upgrade.Price > _wallet.Coins)
         {
-            if (view.Upgrade.Price > _wallet.Coins || view.Upgrade.CanSellUpgrade() == false)
-            {
-                view.DeactivateButton();
-            }
+            upgradeView.DeactivateButton();
         }
     }
 
@@ -60,12 +74,10 @@ public class UpgradeScreen : MonoBehaviour
     {
         if (_wallet.TryDecreaseCoins(upgradeView.Upgrade.Price))
         {
-            if (upgradeView.Upgrade.CanSellUpgrade())
-            {
-                upgradeView.Upgrade.SellUpgrade();
-                _wallet.DecreaseCoins(upgradeView.Upgrade.Price);
-                UpdateInteractableButtons();
-            }
+            upgradeView.Upgrade.SellUpgrade();
+            _wallet.DecreaseCoins(upgradeView.Upgrade.Price);
+            UpdateInteractableButton(upgradeView, upgradeView.Upgrade);
+
         }
     }
 }

@@ -1,34 +1,42 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Upgrade : MonoBehaviour
+public abstract class Upgrade : MonoBehaviour
 {
     [SerializeField] private string _upgradeName;
     [SerializeField] private Sprite _imageUpgrade;
     [SerializeField] private int _price;
-    [SerializeField] private int _maxQuanity;
 
-    private int _currentQuanity;
+    protected int _currentLevel;
 
     public event UnityAction Buyed;
+    public event UnityAction<int> CurrentLevelChanged;
 
     public string UpgradeName => _upgradeName;
     public Sprite ImageUpgrade => _imageUpgrade;
     public int Price => _price;
-    public int MaxQuanity => _maxQuanity;
-    public int CurrentQuanity => _currentQuanity;
+    public int CurrentLevel => _currentLevel;
 
-    public bool CanSellUpgrade()
+    private void Awake()
     {
-        return _currentQuanity < _maxQuanity;
+        Load();
     }
+
+    private void Start()
+    {
+        CurrentLevelChanged?.Invoke(_currentLevel);
+    }
+
+    public abstract void Load();
+
+    public abstract void Save();
+
+    public abstract SaveData.PlayerData GetSaveSnapshot();
 
     public void SellUpgrade()
     {
-        if (CanSellUpgrade())
-        {
-            _currentQuanity++;
-            Buyed.Invoke();
-        }
+        _currentLevel++;
+        Buyed.Invoke();
+        Save();
     }
 }

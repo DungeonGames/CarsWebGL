@@ -11,7 +11,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private GameUiHandler _gameStartHandler;
     [SerializeField] private Transform _body;
 
-    private float _decreaseDelayPerShot = 0.1f;
+    private float _decreaseDelayPerShot = 0.01f;
     private float _timeRemaining;
     private bool _canFire = false;
     private Enemy _currentTraget;
@@ -38,7 +38,10 @@ public abstract class Gun : MonoBehaviour
         }
 
         if (_upgrade != null)
+        {
             _upgrade.Buyed += OnUpgradeBuyed;
+            _upgrade.CurrentLevelChanged += OnCurrentLevelChanged;
+        }
     }
 
     private void OnDisable()
@@ -50,7 +53,10 @@ public abstract class Gun : MonoBehaviour
         }
 
         if (_upgrade != null)
-            _upgrade.Buyed -= OnUpgradeBuyed;
+        {
+            _upgrade.Buyed += OnUpgradeBuyed;
+            _upgrade.CurrentLevelChanged -= OnCurrentLevelChanged;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -60,7 +66,7 @@ public abstract class Gun : MonoBehaviour
             if (_currentTraget == null && enemy.IsAlive)
             {
                 _currentTraget = enemy;
-                enemy.Die += OnDying;
+                enemy.PrepareToDie += OnDying;
             }
         }
     }
@@ -72,6 +78,8 @@ public abstract class Gun : MonoBehaviour
     public void StartFire() => _canFire = true;
 
     private void OnUpgradeBuyed() => _delayPerShot -= _decreaseDelayPerShot;
+
+    private void OnCurrentLevelChanged(int level) => _delayPerShot -= _decreaseDelayPerShot * level;
 
     private void PrepareToShoot()
     {
@@ -93,7 +101,7 @@ public abstract class Gun : MonoBehaviour
 
     private void OnDying(Enemy enemy)
     {
-        enemy.Die -= OnDying;
+        enemy.PrepareToDie -= OnDying;
         _currentTraget = null;
     }
 }

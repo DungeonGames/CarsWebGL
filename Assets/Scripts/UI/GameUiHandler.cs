@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(ProgressBar))]
 public class GameUiHandler : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _startUI;
@@ -11,32 +12,46 @@ public class GameUiHandler : MonoBehaviour
     [SerializeField] private CanvasGroup _endGameUI;
     [SerializeField] private CanvasGroup _youLoseUI;
     [SerializeField] private Button _tapToStartButton;
-    [SerializeField] private ProgressBar _levelProgressBar;
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private Car _car;
+    [SerializeField] private PlayerBag _playerBag;
 
     private float _deleay = 2f;
+    private ProgressBar _levelProgressBar;
 
+    private Car _car;
     public event UnityAction GameStart;
     public event UnityAction GameEnd;
 
+    private void Awake()
+    {
+        _levelProgressBar = GetComponent<ProgressBar>();
+    }
+
     private void OnEnable()
     {
+        _playerBag.CarChanged += OnCarChanged;
         _tapToStartButton.onClick.AddListener(StartGame);
         _levelProgressBar.LevelComplete += OnLevelComplete;
         _playerInput.Stopped += OnPlayerStoped;
         _playerInput.Driving += OnPlayerDriving;
-        _car.Died += OnPlayerDied;
+        
     }
 
     private void OnDisable()
     {
+        _playerBag.CarChanged -= OnCarChanged;
         _tapToStartButton.onClick.RemoveListener(StartGame);
         _levelProgressBar.LevelComplete -= OnLevelComplete;
         _playerInput.Stopped -= OnPlayerStoped;
-        _playerInput.Driving += OnPlayerDriving;
+        _playerInput.Driving -= OnPlayerDriving;
+        _car.Died -= OnPlayerDied;
     }
 
+    private void OnCarChanged(Car car)
+    {
+        _car = car;
+        _car.Died += OnPlayerDied;
+    }
     private void StartGame()
     {
         _startUI.gameObject.SetActive(false);
@@ -56,10 +71,10 @@ public class GameUiHandler : MonoBehaviour
 
         yield return new WaitForSeconds(_deleay);
 
-        _playerInput.StopMove();
         _inGameUI.gameObject.SetActive(false);
-        _endGameUI.gameObject.SetActive(true);
         _helperUI.gameObject.SetActive(false);
+        _endGameUI.alpha = 1;
+        _endGameUI.blocksRaycasts = true;
     }
 
     private void OnPlayerStoped() => _helperUI.alpha = 1;
@@ -69,7 +84,6 @@ public class GameUiHandler : MonoBehaviour
     private void OnPlayerDied()
     {
         GameEnd?.Invoke();
-        _playerInput.StopMove();
         _youLoseUI.gameObject.SetActive(true);
         _inGameUI.gameObject.SetActive(false);
         _helperUI.gameObject.SetActive(false);

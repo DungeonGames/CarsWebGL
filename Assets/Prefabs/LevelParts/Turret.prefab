@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4226184801995855554}
   - component: {fileID: 6183091444744278175}
   - component: {fileID: 6946815270481424794}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6152410224920648693}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 8456967176877623605}
   - component: {fileID: 7065579445682208989}
   - component: {fileID: 1248336386827204213}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 1193366416622189162}
   - component: {fileID: 5805979867167045387}
   - component: {fileID: 6676490089427024296}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NurbsPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 4671583772525834521}
   - component: {fileID: 5012803991172172090}
   - component: {fileID: 1166348932081617314}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseStructure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4652576406627788244}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 3729197560594695422}
   - component: {fileID: 8054438674127060201}
   - component: {fileID: 9075545270934145111}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 1360763047842833133}
   - component: {fileID: 1690958543659143462}
   - component: {fileID: 4954005633625591163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 3633625911293152346}
   - component: {fileID: 5883452467043269656}
   - component: {fileID: 3758327635089151805}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 5921856170480355086}
   - component: {fileID: 1165451473554604143}
   - component: {fileID: 5006897747194657958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 2413714902977137909}
   - component: {fileID: 4793648451059199609}
   - component: {fileID: 3259235601982579230}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret_Base_Mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 4905199203441078311}
   - component: {fileID: 2908699154604983152}
   - component: {fileID: 2322593604349951043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret_LinearActuator_Shaft_Tilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2654101433606037800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RotationControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -947,7 +947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4011170820400708158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TiltControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,11 +3,12 @@ using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] private GameUiHandler _gameHandler;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private SwitchToggleInput _toggleInput;
 
     private Vector2 _direction = new Vector2();
-    private bool _enableInput = true;
+    private bool _enableInput = false;
     private bool _isKeyboardInput;
 
     public event UnityAction<Vector2> Driving;
@@ -15,11 +16,15 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
+        _gameHandler.GameStart += StartMove;
+        _gameHandler.GameEnd += StopMove;
         _toggleInput.KeyboardOn += IsKeyboardInputOn;
     }
 
     private void OnDisable()
     {
+        _gameHandler.GameStart -= StartMove;
+        _gameHandler.GameEnd -= StopMove;
         _toggleInput.KeyboardOn -= IsKeyboardInputOn;
     }
 
@@ -55,10 +60,11 @@ public class PlayerInput : MonoBehaviour
             _direction = Vector2.zero;
             Driving?.Invoke(_direction);
         }
-
     }
 
-    public void StopMove() => _enableInput = false;
+    private void StartMove() => _enableInput = true;
+
+    private void StopMove() => _enableInput = false;
 
     private void IsKeyboardInputOn(bool state) => _isKeyboardInput = state;
 }

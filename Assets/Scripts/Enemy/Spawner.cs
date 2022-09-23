@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private enum GizmoType { Never, SelectedOnly, Always }
 
     [SerializeField] private LevelGenerator _levelGenerator;
-    [SerializeField] private Car _player;
+    [SerializeField] private PlayerMover _player;
     [SerializeField] private GameUiHandler _gameStartHandler;
     [SerializeField] private EnemyWalls _enemyWalls;
     [SerializeField] private float _spawnRadius = 15f;
@@ -82,7 +82,7 @@ public class Spawner : MonoBehaviour
         Gizmos.DrawSphere(transform.position, _spawnRadius);
     }
 
-    private void Initialize(Wave wave, Car player)
+    private void Initialize(Wave wave, PlayerMover player)
     {
         if (wave.GreenCount > 0)
         {
@@ -109,7 +109,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy(Enemy template, Car player)
+    private void SpawnEnemy(Enemy template, PlayerMover player)
     {
         Vector3 position = transform.position + Random.insideUnitSphere * _spawnRadius;
         Enemy enemy = Instantiate(template, position, transform.rotation);

@@ -7,14 +7,14 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _damage;
-    [SerializeField] private int _health;
+    [SerializeField] private float _health;
     [SerializeField] private float _maxScale = 2.5f;
     [SerializeField] private float _minScale = 1.5f;
     [SerializeField] private ParticleSystem _dieEffect;
 
-    private int _currentHealth;
+    private float _currentHealth;
     private float _delayToDie = 1f;
-    private Car _target;
+    private PlayerMover _target;
     private EnemyMaterialSeter _materialSeter;
     private Boid _boid;
     private Spawner _spawner;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public bool IsAlive => _isAlive;
 
     public event UnityAction Hit;
-    public event UnityAction PrepareToDie;
+    public event UnityAction<Enemy> PrepareToDie;
     public event UnityAction<Enemy> Die;
 
     private void Awake()
@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Init(Car target, Spawner spawner)
+    public void Init(PlayerMover target, Spawner spawner)
     {
         _boid.Initialize(null);
         float randomScale = Random.Range(_minScale, _maxScale);
@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
         _spawner.GameStart += OnGameStarted;
     }
 
-    public void TakeDamage(int value)
+    public void TakeDamage(float value)
     {
         if (CanDecreaseHealth(value))
         {
@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
         else
         {
             _isAlive = false;
-            PrepareToDie?.Invoke();
+            PrepareToDie?.Invoke(this);
             _boid.enabled = false;
         }
     }
@@ -86,6 +86,7 @@ public class Enemy : MonoBehaviour
         _isAlive = false;
         gameObject.SetActive(false);
         _boid.enabled = false;
+        PrepareToDie?.Invoke(this);
         Die?.Invoke(this);
     }
 

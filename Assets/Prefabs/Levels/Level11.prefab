@@ -60,7 +60,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1762993156269097968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TurretGates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8169054404282309906}
   - component: {fileID: 8169054404282309904}
-  - component: {fileID: 267090012355212912}
   - component: {fileID: 8079864829846707485}
   m_Layer: 0
   m_Name: Ground (1)
@@ -652,19 +651,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &267090012355212912
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169054404282309907}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.124357, y: 3.67, z: 40.086624}
-  m_Center: {x: -4.799207, y: -1.8, z: 11.754398}
 --- !u!33 &8079864829846707485
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -682,7 +668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8307481034809730034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mines
   m_TagString: Untagged
   m_Icon: {fileID: 0}

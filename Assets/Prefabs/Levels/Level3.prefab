@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7480709268367036163}
   - component: {fileID: 4311925413556238100}
   - component: {fileID: 3018190528194593706}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5112274789970159888}
   - component: {fileID: 4856967046774807259}
   - component: {fileID: 1211536460892915334}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1496559213929626340}
   - component: {fileID: 1261318741472772807}
   - component: {fileID: 4917825451442618975}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseStructure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 1477551809375825449}
   - component: {fileID: 1477551809375825463}
   - component: {fileID: 1477551809375825462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 8462027269890213640}
   - component: {fileID: 1627595809363158404}
   - component: {fileID: 8731131258245425635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret_Base_Mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 1153713919125044186}
   - component: {fileID: 8957046569250113677}
   - component: {fileID: 8370949870917400510}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret_LinearActuator_Shaft_Tilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8125996952162413269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RotationControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 3144481907679740195}
   - component: {fileID: 3144481907679740194}
   - component: {fileID: 3144481907679740197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 3144481907860214826}
   - component: {fileID: 3144481907860214829}
   - component: {fileID: 3144481907860214828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightDoor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 3144481908224912843}
   - component: {fileID: 3144481908224912842}
   - component: {fileID: 3144481908224912854}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TurretGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +901,7 @@ GameObject:
   - component: {fileID: 3144481908332366523}
   - component: {fileID: 3144481908332366522}
   - component: {fileID: 3144481908332366525}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,7 +1207,7 @@ GameObject:
   - component: {fileID: 3144481908986303097}
   - component: {fileID: 3144481908986303096}
   - component: {fileID: 3144481908986303099}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1302,7 +1302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3144481909187083304}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1487,7 +1487,7 @@ GameObject:
   - component: {fileID: 3144481909563390442}
   - component: {fileID: 3144481909563390445}
   - component: {fileID: 3144481909563390444}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1587,7 @@ GameObject:
   - component: {fileID: 3144481909569545532}
   - component: {fileID: 3144481909569545535}
   - component: {fileID: 3144481909569545534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1834,7 +1834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3144481909696505649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1865,7 +1865,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7186230454911513027}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TiltControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1899,7 +1899,7 @@ GameObject:
   - component: {fileID: 7385111319897556903}
   - component: {fileID: 411565642307549157}
   - component: {fileID: 6933387352559099072}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1982,7 +1982,7 @@ GameObject:
   - component: {fileID: 450004624591719667}
   - component: {fileID: 4916971937685621650}
   - component: {fileID: 1255385975006230363}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2069,7 +2069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 104098037594132488}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2103,7 +2103,7 @@ GameObject:
   - component: {fileID: 2399638818107982536}
   - component: {fileID: 3899535702363065120}
   - component: {fileID: 4990814437540298120}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2186,7 +2186,7 @@ GameObject:
   - component: {fileID: 7977696496074317119}
   - component: {fileID: 134779189508184930}
   - component: {fileID: 3780806742669048423}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2269,7 +2269,7 @@ GameObject:
   - component: {fileID: 4944851731010302359}
   - component: {fileID: 325085937932631286}
   - component: {fileID: 628177662393446997}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NurbsPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2350,7 +2350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3785425305798841183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3500,7 +3500,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 240b87f016ce9d1449e4a0784cd2cd11,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 240b87f016ce9d1449e4a0784cd2cd11,
         type: 3}

@@ -411,7 +411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5814318694248966463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mines
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ public class Wallet : MonoBehaviour
     public int Coins { get; private set; }
     public int Gems { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         Load();
         ChangeCollectedText();
