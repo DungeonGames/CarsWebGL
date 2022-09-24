@@ -9,20 +9,25 @@ public class MineMaterialSeter : MonoBehaviour
     [SerializeField] private Material _defaultMaterial;
     [SerializeField] private Material _activatedMaterial;
 
+    private AudioResources _audioResources;
     private MeshRenderer _meshRenderer;
     private float _delay = 0.5f;
+
+    private const string MineActivated = "MineActivated";
 
     public event UnityAction Ready;
 
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
+        _audioResources = FindObjectOfType<AudioResources>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Car car))
         {
+            _audioResources.PlaySound(MineActivated);
             StartCoroutine(PrepareToExplosion());
         }
     }

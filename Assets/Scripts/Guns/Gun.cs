@@ -11,6 +11,9 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private GameUiHandler _gameStartHandler;
     [SerializeField] private Transform _body;
 
+    protected AudioResources AudioResources;
+
+    private float _minDelayPerShot = 0.1f;
     private float _decreaseDelayPerShot = 0.01f;
     private float _timeRemaining;
     private bool _canFire = false;
@@ -20,6 +23,7 @@ public abstract class Gun : MonoBehaviour
 
     private void Start()
     {
+        AudioResources = FindObjectOfType<AudioResources>();
         _timeRemaining = _delayPerShot;
     }
 
@@ -77,9 +81,25 @@ public abstract class Gun : MonoBehaviour
 
     public void StartFire() => _canFire = true;
 
-    private void OnUpgradeBuyed() => _delayPerShot -= _decreaseDelayPerShot;
+    private void OnUpgradeBuyed()
+    {
+        _delayPerShot -= _decreaseDelayPerShot;
 
-    private void OnCurrentLevelChanged(int level) => _delayPerShot -= _decreaseDelayPerShot * level;
+        if (_delayPerShot <= _minDelayPerShot)
+        {
+            _delayPerShot = _minDelayPerShot;
+        }
+    }
+
+    private void OnCurrentLevelChanged(int level)
+    {
+        _delayPerShot -= _decreaseDelayPerShot * level;
+
+        if (_delayPerShot <= _minDelayPerShot)
+        {
+            _delayPerShot = _minDelayPerShot;
+        }
+    }
 
     private void PrepareToShoot()
     {

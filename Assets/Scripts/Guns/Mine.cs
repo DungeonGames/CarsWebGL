@@ -10,14 +10,18 @@ public class Mine : MonoBehaviour
     [SerializeField] private MineMaterialSeter _mineMaterialSeter;
     [SerializeField] private ParticleSystem _explisionParticle;
 
+    private AudioResources _audioResources;
     private int _damage = 2;
     private Vector3 _startPositionParticle;
     private const float _startPositionParticleY = 0.1f;
     private float _delay = 0.1f;
     private float _upForce = 0.01f;
 
+    private const string _mineExplosion = "MineExplosion";
+
     private void Start()
     {
+        _audioResources = FindObjectOfType<AudioResources>();
         _startPositionParticle = transform.position;
         _startPositionParticle.y = _startPositionParticleY;
     }
@@ -45,6 +49,7 @@ public class Mine : MonoBehaviour
 
     private void Explosion()
     {
+        _audioResources.PlaySound(_mineExplosion);
         Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
         Instantiate(_explisionParticle, _startPositionParticle, Quaternion.identity);
         foreach (Collider hit in colliders)
