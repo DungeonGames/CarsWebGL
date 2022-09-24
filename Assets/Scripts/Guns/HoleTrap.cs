@@ -8,14 +8,17 @@ public class HoleTrap : MonoBehaviour
     [SerializeField] private SphereCollider _playerWall;
 
     private Animator _animator;
+    private AudioResources _audioResources;
     private bool _isActivated = false;
     private float _delayForClosed = 2f;
     private float _delayForActivated = 1f;
     private const string OpenGate = "OpenGate";
     private const string CloseGate = "CloseGate";
+    private const string ActivateTrap = "ActivateTrap";
 
     private void Start()
     {
+        _audioResources = FindObjectOfType<AudioResources>();
         _animator = GetComponent<Animator>();
     }
 
@@ -34,6 +37,7 @@ public class HoleTrap : MonoBehaviour
         {
             if (other.TryGetComponent(out Car car))
             {
+                _audioResources.PlaySound(ActivateTrap);
                 _animator.SetBool(OpenGate, true);
                 _isActivated = true;
                 _animator.SetBool(OpenGate, true);

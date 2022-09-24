@@ -8,14 +8,17 @@ public class TurretGate : MonoBehaviour
     [SerializeField] private Gun _turret;
 
     private Animator _animator;
+    private AudioResources _audioResources;
     private float _delayForClosed = 7f;
     private float _delayForActivated = 2f;
     private bool _isActivated = false;
     private const string OpenGate = "OpenGate";
     private const string CloseGate = "CloseGate";
+    private const string ActivateTrap = "ActivateTrap";
 
     private void Start()
     {
+        _audioResources = FindObjectOfType<AudioResources>();
         _animator = GetComponent<Animator>();
     }
 
@@ -25,6 +28,7 @@ public class TurretGate : MonoBehaviour
         {
             if (other.TryGetComponent(out Car car))
             {
+                _audioResources.PlaySound(ActivateTrap);
                 _isActivated = true;
                 _animator.SetBool(OpenGate, true);
                 _animator.SetBool(CloseGate, false);

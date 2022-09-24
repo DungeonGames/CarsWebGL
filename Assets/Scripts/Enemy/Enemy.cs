@@ -16,11 +16,14 @@ public class Enemy : MonoBehaviour
     private float _delayToDie = 1f;
     private PlayerMover _target;
     private EnemyMaterialSeter _materialSeter;
+    private AudioResources _audioResources;
     private Boid _boid;
     private Spawner _spawner;
     private bool _isAlive = true;
 
     public bool IsAlive => _isAlive;
+
+    private const string EnemyDied = "EnemyDied";
 
     public event UnityAction Hit;
     public event UnityAction<Enemy> PrepareToDie;
@@ -34,6 +37,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        _audioResources = FindObjectOfType<AudioResources>();
         _currentHealth = _health;
     }
 
@@ -88,6 +92,7 @@ public class Enemy : MonoBehaviour
         _boid.enabled = false;
         PrepareToDie?.Invoke(this);
         Die?.Invoke(this);
+        _audioResources.PlaySound(EnemyDied);
     }
 
     private bool CanDecreaseHealth(float value)
@@ -108,6 +113,7 @@ public class Enemy : MonoBehaviour
 
         gameObject.SetActive(false);
         Die?.Invoke(this);
+        _audioResources.PlaySound(EnemyDied);
         Instantiate(_dieEffect, transform.position, Quaternion.identity);
     }
 }

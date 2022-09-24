@@ -11,6 +11,8 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private GameUiHandler _gameStartHandler;
     [SerializeField] private Transform _body;
 
+    protected AudioResources AudioResources;
+
     private float _minDelayPerShot = 0.1f;
     private float _decreaseDelayPerShot = 0.01f;
     private float _timeRemaining;
@@ -21,6 +23,7 @@ public abstract class Gun : MonoBehaviour
 
     private void Start()
     {
+        AudioResources = FindObjectOfType<AudioResources>();
         _timeRemaining = _delayPerShot;
     }
 

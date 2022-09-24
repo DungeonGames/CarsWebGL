@@ -4861,11 +4861,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 50
-  _radius: 7
+  _radius: 8
   _explisionParticle: {fileID: 1242938611431658449, guid: 9196044a40b7e5b459287d99fc1a57c2,
     type: 3}
   _detectionCollider: {fileID: 1619793200269388077}
-  _power: 3
+  _power: 5
 --- !u!136 &1619793200269388077
 CapsuleCollider:
   m_ObjectHideFlags: 0

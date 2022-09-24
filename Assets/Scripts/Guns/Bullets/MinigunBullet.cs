@@ -6,6 +6,8 @@ public class MinigunBullet : Bullet
 
     private void OnTriggerEnter(Collider other)
     {
+        Destroy(gameObject);
+
         if (other.TryGetComponent(out Enemy enemy))
         {
             if (enemy.IsAlive)
@@ -14,6 +16,5 @@ public class MinigunBullet : Bullet
             }
         }
 
-        Destroy(gameObject);
     }
 }

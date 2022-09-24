@@ -8,9 +8,17 @@ public class RocketBullet : Bullet
     [SerializeField] private CapsuleCollider _detectionCollider;
     [SerializeField] private float _power;
 
+    private AudioResources _audioResources;
     private float _delay = 0.1f;
     private float _upForce = 0.001f;
     private float _damage = 0.5f;
+
+    private const string RocketLauncherExplosion = "RocketLauncherExplosion";
+
+    private void Start()
+    {
+        _audioResources = FindObjectOfType<AudioResources>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,6 +27,7 @@ public class RocketBullet : Bullet
 
     private void Explosion()
     {
+        _audioResources.PlaySound(RocketLauncherExplosion);
         Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
         Instantiate(_explisionParticle, transform.position, Quaternion.identity);
         foreach (Collider hit in colliders)
