@@ -1,6 +1,8 @@
 using Agava.YandexGames;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using System;
 
 public class YandexLeaderboard : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class YandexLeaderboard : MonoBehaviour
 
     private void Start()
     {
-        _leaderboardView = FindObjectOfType<LeaderboardView>();
+        _leaderboardView = FindObjectOfType<LeaderboardView>();             
     }
 
     public void Construct(LeaderboardView leaderboard)
@@ -18,12 +20,11 @@ public class YandexLeaderboard : MonoBehaviour
         _leaderboardView = leaderboard;
     }
 
-
     public void FormListOfTopPlayers(bool test = false)
     {
         List<PlayerInfoLeaderboard> top5Players = new List<PlayerInfoLeaderboard>();
 
-        if(test)
+        if (test)
         {
             for (int i = 0; i < 5; i++)
             {
@@ -64,9 +65,12 @@ public class YandexLeaderboard : MonoBehaviour
 #if !UNITY_EDITOR
         if (!PlayerAccount.IsAuthorized)
             return;
-
-        Leaderboard.SetScore(_leaderboardName, score);
-#endif
+#endif      
+        Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>
+        {
+            if (result != null)
+                Leaderboard.SetScore(_leaderboardName, score);
+        });       
     }
 }
 

@@ -18,7 +18,7 @@ public class LeaderboardView : MonoBehaviour
             GameObject leaderboardElementInstance = Instantiate(_leaderboardElementPrefab, _parentObject);
 
             LeaderboardElement leaderboardElement = leaderboardElementInstance.GetComponent<LeaderboardElement>();
-            //leaderboardElement.Construct(info.Name, info.Score);
+            leaderboardElement.Initialize(info.Name, info.Score, false);
 
             _spawnedElements.Add(leaderboardElementInstance);
         }

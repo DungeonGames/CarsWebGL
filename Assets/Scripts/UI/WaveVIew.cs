@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class WaveVIew : MonoBehaviour
+public class WaveView : MonoBehaviour
 {
     [SerializeField] private LevelGenerator _levelGenerator;
     [SerializeField] private TMP_Text _currentWaveText;

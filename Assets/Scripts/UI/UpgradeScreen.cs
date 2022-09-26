@@ -76,8 +76,11 @@ public class UpgradeScreen : MonoBehaviour
         {
             upgradeView.Upgrade.SellUpgrade();
             _wallet.DecreaseCoins(upgradeView.Upgrade.Price);
-            UpdateInteractableButton(upgradeView, upgradeView.Upgrade);
-
+            
         }
+
+        UpdateInteractableButton(_carUpgradeView, _carUpgradeView.Upgrade);
+
+        UpdateInteractableButton(_gunUpgradeView, _gunUpgradeView.Upgrade);
     }
 }

@@ -9,7 +9,7 @@ namespace SaveData
         public bool IsKeyboardInput = false;
         public bool[] IsUnlockableItemFlags = new bool[2];
         public int CurrentUnlockableQuanity = 0;
-        public int CurrentWave;
+        public int CurrentWave = 0;
         public int Coins;
         public int Gems;
         public int SedanLevel;

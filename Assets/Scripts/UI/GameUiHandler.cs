@@ -12,7 +12,6 @@ public class GameUiHandler : MonoBehaviour
     [SerializeField] private CanvasGroup _endGameUI;
     [SerializeField] private CanvasGroup _youLoseUI;
     [SerializeField] private Button _tapToStartButton;
-    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private PlayerBag _playerBag;
 
     private float _deleay = 2f;
@@ -31,10 +30,7 @@ public class GameUiHandler : MonoBehaviour
     {
         _playerBag.CarChanged += OnCarChanged;
         _tapToStartButton.onClick.AddListener(StartGame);
-        _levelProgressBar.LevelComplete += OnLevelComplete;
-        _playerInput.Stopped += OnPlayerStoped;
-        _playerInput.Driving += OnPlayerDriving;
-        
+        _levelProgressBar.LevelComplete += OnLevelComplete;        
     }
 
     private void OnDisable()
@@ -42,8 +38,6 @@ public class GameUiHandler : MonoBehaviour
         _playerBag.CarChanged -= OnCarChanged;
         _tapToStartButton.onClick.RemoveListener(StartGame);
         _levelProgressBar.LevelComplete -= OnLevelComplete;
-        _playerInput.Stopped -= OnPlayerStoped;
-        _playerInput.Driving -= OnPlayerDriving;
         _car.Died -= OnPlayerDied;
     }
 
@@ -77,9 +71,7 @@ public class GameUiHandler : MonoBehaviour
         _endGameUI.blocksRaycasts = true;
     }
 
-    private void OnPlayerStoped() => _helperUI.alpha = 1;
-
-    private void OnPlayerDriving(Vector2 direction) => _helperUI.alpha = 0;
+    
 
     private void OnPlayerDied()
     {
