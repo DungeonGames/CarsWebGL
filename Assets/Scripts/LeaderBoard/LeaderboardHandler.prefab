@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0616ddab02f70f498ac31c09f7b32f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parentObject: {fileID: 5276735447102649346}
+  _parentObject: {fileID: 5276735448169286876}
   _leaderboardElementPrefab: {fileID: 552502370636458572, guid: 1819724f70bb4af42b215beadc069426,
     type: 3}
 --- !u!1 &5276735449000478151
