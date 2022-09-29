@@ -1,19 +1,22 @@
+using DG.Tweening;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
-public class FadeImageChanger : MonoBehaviour
+public class PlayerHealthBar : MonoBehaviour
 {
-    [SerializeField] private Image _lowHealtTrigger;
     [SerializeField] private PlayerBag _playerBag;
+    [SerializeField] private Slider _slider;
+    [SerializeField] private Image _lowHealtTrigger;
 
+    private Car _car;
     private const float ToFade = 0.5f;
     private const float FadeSpeed = 1f;
 
-    private Car _car;
-
     private void OnEnable()
     {
+        _slider.value = 1;
         _playerBag.CarChanged += OnCarChanged;
     }
 
@@ -27,11 +30,13 @@ public class FadeImageChanger : MonoBehaviour
     {
         if (_car != null)
         {
+            _car.HealtChange -= OnValueChanged;
             _car.LowHealh -= OnLowHealt;
         }
 
         _car = car;
         _car.LowHealh += OnLowHealt;
+        _car.HealtChange += OnValueChanged;
     }
 
     private void OnLowHealt()
@@ -40,4 +45,8 @@ public class FadeImageChanger : MonoBehaviour
         _lowHealtTrigger.DOFade(ToFade, FadeSpeed).SetLoops(-1, LoopType.Yoyo);
     }
 
+    private void OnValueChanged(float value, float maxValue)
+    {
+        _slider.value = value / maxValue;      
+    }
 }

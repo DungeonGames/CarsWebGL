@@ -55,6 +55,12 @@ public class Wallet : MonoBehaviour
         Save();
     }
 
+    public void AddRewardOnKill(int coins)
+    {
+        Coins += coins;
+        Save();
+    }
+
     private void Load()
     {
         var dataCoins = SaveSystem.Load<SaveData.PlayerData>(CoinsSave);

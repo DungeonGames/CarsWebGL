@@ -17,11 +17,13 @@ public class RewardView : MonoBehaviour
     private void OnEnable()
     {
         _levelReward.CurrentItem += ShowProgressBar;
+        _levelReward.CoinRewardChange += OnCoinRewardChenged;
     }
 
     private void OnDisable()
     {
         _levelReward.CurrentItem -= ShowProgressBar;
+        _levelReward.CoinRewardChange -= OnCoinRewardChenged;
     }
 
     private void Start()
@@ -38,4 +40,6 @@ public class RewardView : MonoBehaviour
             item.ShowProgress(currentQuanity);
         }
     }
+
+    private void OnCoinRewardChenged() => _coinText.text = _levelReward.CoinsReward.ToString();
 }

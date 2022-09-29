@@ -10,6 +10,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private Upgrade _upgrade;
     [SerializeField] private GameUiHandler _gameStartHandler;
     [SerializeField] private Transform _body;
+    [SerializeField] private ParticleSystem _upgradeEffect;
 
     protected AudioResources AudioResources;
 
@@ -85,6 +86,7 @@ public abstract class Gun : MonoBehaviour
     {
         _delayPerShot -= _decreaseDelayPerShot;
 
+        _upgradeEffect.Play();
         if (_delayPerShot <= _minDelayPerShot)
         {
             _delayPerShot = _minDelayPerShot;

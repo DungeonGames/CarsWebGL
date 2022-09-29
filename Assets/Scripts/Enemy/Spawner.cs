@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private enum GizmoType { Never, SelectedOnly, Always }
 
+    [SerializeField] private Wallet _wallet;
     [SerializeField] private LevelGenerator _levelGenerator;
     [SerializeField] private PlayerMover _player;
     [SerializeField] private GameUiHandler _gameStartHandler;
@@ -18,6 +19,7 @@ public class Spawner : MonoBehaviour
     private List<Enemy> _pooledEnemys = new List<Enemy>();
     private int _spawned;
     private int _deads;
+    private int _rewardOnKill = 2;
 
     public event UnityAction<int, int> EnemyCountChanged;
     public event UnityAction GameStart;
@@ -73,6 +75,7 @@ public class Spawner : MonoBehaviour
     public void OnEnemyDead(Enemy enemy)
     {
         _deads++;
+        _wallet.AddRewardOnKill(_rewardOnKill);
         EnemyCountChanged?.Invoke(_deads, _spawned);
     }
 

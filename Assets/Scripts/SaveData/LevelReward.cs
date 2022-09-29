@@ -14,6 +14,7 @@ public class LevelReward : MonoBehaviour
     private const string CurrentQuanity = "CurrentQuanity";
     private bool[] _isUnlockableFlags;
     private int _currentQuanity;
+    private int _coinMultiplier = 2;
     private Wallet _wallet;
     private GameUiHandler _gameHandler;
     private UnlockableItem _currentItem;
@@ -22,6 +23,7 @@ public class LevelReward : MonoBehaviour
     public int GemsReward => _gemsReward;
 
     public event UnityAction<UnlockableItem, int> CurrentItem;
+    public event UnityAction CoinRewardChange;
 
     private void Awake()
     {
@@ -56,6 +58,12 @@ public class LevelReward : MonoBehaviour
     private void OnDisable()
     {
         _gameHandler.GameEnd -= OnLevelEnded;
+    }
+
+    public void InceaseCoinReward()
+    {
+        _coinsReward *= _coinMultiplier;
+        CoinRewardChange?.Invoke();
     }
 
     public void OnClaimRewardButtonClick()
