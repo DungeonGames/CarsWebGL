@@ -6,14 +6,9 @@ using System;
 
 public class YandexLeaderboard : MonoBehaviour
 {
-    private LeaderboardView _leaderboardView;
+    [SerializeField] private LeaderboardView _leaderboardView;
 
     private const string _leaderboardName = "BestOfTheBest";
-
-    private void Start()
-    {
-        _leaderboardView = FindObjectOfType<LeaderboardView>();             
-    }
 
     public void Construct(LeaderboardView leaderboard)
     {
@@ -35,7 +30,14 @@ public class YandexLeaderboard : MonoBehaviour
 
             return;
         }
+#if !UNITY_EDITOR
+        PlayerAccount.Authorize();
 
+        if (PlayerAccount.IsAuthorized)
+        {
+            PlayerAccount.RequestPersonalProfileDataPermission();
+        };
+#endif
         Leaderboard.GetEntries(_leaderboardName, (result) =>
         {
             Debug.Log($"My rank = {result.userRank}");
@@ -65,12 +67,11 @@ public class YandexLeaderboard : MonoBehaviour
 #if !UNITY_EDITOR
         if (!PlayerAccount.IsAuthorized)
             return;
-#endif      
+#endif
         Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>
         {
-            if (result != null)
-                Leaderboard.SetScore(_leaderboardName, score);
-        });       
+            Leaderboard.SetScore(_leaderboardName, score);
+        });
     }
 }
 

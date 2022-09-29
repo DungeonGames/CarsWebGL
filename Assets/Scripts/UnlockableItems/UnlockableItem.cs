@@ -1,3 +1,4 @@
+using Lean.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,26 +8,28 @@ using UnityEngine.UI;
 public abstract class UnlockableItem : MonoBehaviour
 {
     [SerializeField] private protected PlayerBag PlayerBag;
-
     [SerializeField] private Slider _progressBar;
-    [SerializeField] private TMP_Text _currentQuanityText;
     [SerializeField] private int _quanity;
-    [SerializeField] private string _name;
     [SerializeField] private Sprite _sprite;
-    [SerializeField] private string _description;
     [SerializeField] private int _price;
+    [SerializeField] private string _localizedItemName;
+    [SerializeField] private string _localizedItemDescription;
+    [SerializeField] private LeanToken _currentQuanityToken;
+    [SerializeField] private TMP_Text _unlockedText;
+    [SerializeField] private TMP_Text _quanityText;
 
     private protected bool IsBuyed = false;
 
     private bool _isUnlock = false;
 
     public int Quanity => _quanity;
-    public string Name => _name;
     public Sprite Sprite => _sprite;
-    public string Description => _description;
     public int Price => _price;
     public bool IsBuyedItem => IsBuyed;
     public bool IsUnlock => _isUnlock;
+    public string LocalizedItemName => _localizedItemName;
+    public string LocalizedItemDescription => _localizedItemDescription;
+
 
     public event UnityAction<UnlockableItem> Unlock;
 
@@ -44,11 +47,14 @@ public abstract class UnlockableItem : MonoBehaviour
 
         if (_quanity - currentQuanity == 0)
         {
-            _currentQuanityText.text = "UNLOCKED";
+            _quanityText.gameObject.SetActive(false);
+            _unlockedText.gameObject.SetActive(true);
         }
         else
         {
-            _currentQuanityText.text = $"{_quanity - currentQuanity} Waves to Unlock";
+            _quanityText.gameObject.SetActive(true);
+            _unlockedText.gameObject.SetActive(false);
+            _currentQuanityToken.SetValue(_quanity - currentQuanity);
         }
     }
 

@@ -9,7 +9,7 @@ public class GameUiHandler : MonoBehaviour
     [SerializeField] private CanvasGroup _startUI;
     [SerializeField] private CanvasGroup _helperUI;
     [SerializeField] private CanvasGroup _inGameUI;
-    [SerializeField] private CanvasGroup _endGameUI;
+    [SerializeField] private CanvasGroup _rewardUI;
     [SerializeField] private CanvasGroup _youLoseUI;
     [SerializeField] private Button _tapToStartButton;
     [SerializeField] private PlayerBag _playerBag;
@@ -67,8 +67,8 @@ public class GameUiHandler : MonoBehaviour
 
         _inGameUI.gameObject.SetActive(false);
         _helperUI.gameObject.SetActive(false);
-        _endGameUI.alpha = 1;
-        _endGameUI.blocksRaycasts = true;
+        _rewardUI.alpha = 1;
+        _rewardUI.blocksRaycasts = true;
     }
 
     

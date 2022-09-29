@@ -18,13 +18,15 @@ public class CloseOnTap : MonoBehaviour
 
         if (_panelWithControlElements.gameObject.activeSelf == false)
         {
-            _tapToPlay.gameObject.SetActive(true);
+            if (_tapToPlay != null)
+                _tapToPlay.gameObject.SetActive(true);
+
+            Time.timeScale = 1;
         }
         else
         {
-            _tapToPlay.gameObject.SetActive(false);
+            if (_tapToPlay != null)
+                _tapToPlay.gameObject.SetActive(false);
         }
     }
-    
-
 }

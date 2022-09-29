@@ -32,8 +32,6 @@ public class LevelGenerator : MonoBehaviour
             int randomIndex = Random.Range(0, _levels.Count);
             Instantiate(_levels[randomIndex]);
         }
-
-        Save();
     }
 
     private void Start()
@@ -48,10 +46,9 @@ public class LevelGenerator : MonoBehaviour
         Save();
     }
 
-    public void ShowLeaderboard()
+    private void SaveLeaderboard()
     {
-        PlayerAccount.Authorize();
-        _leaderboard.FormListOfTopPlayers();
+        _leaderboard.AddPlayerToLeaderboard(_currentWave + 1);  
     }
 
     private void Load()
@@ -72,11 +69,6 @@ public class LevelGenerator : MonoBehaviour
         }
 
         _currentWave = dataCurrentWave.CurrentWave;
-    }
-
-    private void SaveLeaderboard()
-    {
-        _leaderboard.AddPlayerToLeaderboard(_currentWave + 1);  
     }
 
     private void Save()

@@ -1,11 +1,11 @@
 using UnityEngine;
 using TMPro;
+using Lean.Localization;
 
 public class WaveView : MonoBehaviour
 {
     [SerializeField] private LevelGenerator _levelGenerator;
-    [SerializeField] private TMP_Text _currentWaveText;
-    [SerializeField] private TMP_Text _currentWaveOnRewardText;
+    [SerializeField] private LeanToken _currentWaveToken;
 
     private void OnEnable()
     {
@@ -19,7 +19,6 @@ public class WaveView : MonoBehaviour
 
     private void OnCurrentWaveChanged(int waveNumber)
     {
-        _currentWaveText.text = $"Wave {waveNumber}";
-        _currentWaveOnRewardText.text = $"WAVE {waveNumber}";
+        _currentWaveToken.SetValue(waveNumber);
     }
 }

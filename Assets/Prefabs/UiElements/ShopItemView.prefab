@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3776576132939332448}
   - component: {fileID: 6451894052245086262}
   - component: {fileID: 300657137547790284}
+  - component: {fileID: 8378892063502813031}
   m_Layer: 5
   m_Name: BuyedText
   m_TagString: Untagged
@@ -66,10 +67,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BUYED
+  m_text: "\u041A\u0423\u041F\u041B\u0415\u041D\u041E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 59e34591fe7e0b04aa69149e4be15f32, type: 2}
-  m_sharedMaterial: {fileID: -456706250289361194, guid: 59e34591fe7e0b04aa69149e4be15f32,
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -94,13 +95,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
+  m_fontSize: 50.65
   m_fontSizeBase: 45
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -136,6 +137,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8378892063502813031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32049642478257885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: BuyedText
+  FallbackText: BUYED
 --- !u!1 &7408452029526354836
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,10 +406,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c27f6183d5c7e4191271d1c3d59f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _localizedName: {fileID: 4922618255439047400}
+  _localizedDescription: {fileID: 3368901452779722739}
   _sellButton: {fileID: 7408452029682505797}
-  _name: {fileID: 7408452029900059236}
   _image: {fileID: 7408452030925010970}
-  _description: {fileID: 7408452031298264618}
   _gemImage: {fileID: 7408452029672479221}
   _price: {fileID: 7408452031134548965}
   _buyed: {fileID: 300657137547790284}
@@ -409,6 +424,7 @@ GameObject:
   - component: {fileID: 7408452029900059235}
   - component: {fileID: 7408452029900059237}
   - component: {fileID: 7408452029900059236}
+  - component: {fileID: 4922618255439047400}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -466,8 +482,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SUBARU
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 59e34591fe7e0b04aa69149e4be15f32, type: 2}
-  m_sharedMaterial: {fileID: -456706250289361194, guid: 59e34591fe7e0b04aa69149e4be15f32,
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -492,13 +508,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 72
+  m_fontSizeBase: 60
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -534,6 +550,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4922618255439047400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7408452029900059234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: SUBARU
 --- !u!1 &7408452030035649568
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,8 +784,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 59e34591fe7e0b04aa69149e4be15f32, type: 2}
-  m_sharedMaterial: {fileID: -456706250289361194, guid: 59e34591fe7e0b04aa69149e4be15f32,
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -780,13 +810,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
+  m_fontSize: 63.1
   m_fontSizeBase: 45
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -909,6 +939,7 @@ GameObject:
   - component: {fileID: 7408452031298264617}
   - component: {fileID: 7408452031298264619}
   - component: {fileID: 7408452031298264618}
+  - component: {fileID: 3368901452779722739}
   m_Layer: 5
   m_Name: Decription
   m_TagString: Untagged
@@ -966,8 +997,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Speed: 130'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 59e34591fe7e0b04aa69149e4be15f32, type: 2}
-  m_sharedMaterial: {fileID: -456706250289361194, guid: 59e34591fe7e0b04aa69149e4be15f32,
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -992,13 +1023,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.83
+  m_fontSize: 50
   m_fontSizeBase: 40.83
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1034,3 +1065,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3368901452779722739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7408452031298264616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: 'Speed: 130'

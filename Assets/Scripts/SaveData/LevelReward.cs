@@ -58,11 +58,6 @@ public class LevelReward : MonoBehaviour
         _gameHandler.GameEnd -= OnLevelEnded;
     }
 
-    private void Start()
-    {
-        
-    }
-
     public void OnClaimRewardButtonClick()
     {
         if (_currentItem != null && _currentQuanity >= _currentItem.Quanity)

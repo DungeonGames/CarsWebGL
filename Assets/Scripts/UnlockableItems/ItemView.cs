@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using Lean.Localization;
 
 public class ItemView : MonoBehaviour
 {
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _localizedName;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _localizedDescription;
     [SerializeField] private Button _sellButton;
-    [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _image;
-    [SerializeField] private TMP_Text _description;
     [SerializeField] private Image _gemImage;
     [SerializeField] private TMP_Text _price;
     [SerializeField] private TMP_Text _buyed;
@@ -37,10 +38,10 @@ public class ItemView : MonoBehaviour
         }
 
         _unlockableItem = unlockableItem;
-        _name.text = unlockableItem.Name;
         _image.sprite = unlockableItem.Sprite;
-        _description.text = unlockableItem.Description;
         _price.text = unlockableItem.Price.ToString();
+        _localizedName.TranslationName = unlockableItem.LocalizedItemName;
+        _localizedDescription.TranslationName = unlockableItem.LocalizedItemDescription;
     }
 
     public void DeactivateButton() => _sellButton.interactable = false;
