@@ -6,6 +6,7 @@ public class Car : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private Upgrade _upgrade;
     [SerializeField] private float _maxSpeed;
+    [SerializeField] private ParticleSystem _upgradeEffect;
 
     private float _currentHealth;
     private float _lowHealthValueTrigger;
@@ -16,6 +17,7 @@ public class Car : MonoBehaviour
 
     public event UnityAction LowHealh;
     public event UnityAction Died;
+    public event UnityAction<float, float> HealtChange;
 
 
     private void Start()
@@ -40,6 +42,7 @@ public class Car : MonoBehaviour
         if (CanDecreaseHealth(value))
         {
             _currentHealth -= value;
+            HealtChange?.Invoke(_currentHealth, _health);
 
             if (_currentHealth < _lowHealthValueTrigger)
                 LowHealh?.Invoke();
@@ -64,6 +67,7 @@ public class Car : MonoBehaviour
     private void OnUpgradeBuyed()
     {
         _health += _increaseMaxHealth;
+        _upgradeEffect.Play();
         UpdateHealt();
     }
 

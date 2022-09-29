@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,12 +10,12 @@ public class GameUiHandler : MonoBehaviour
     [SerializeField] private CanvasGroup _startUI;
     [SerializeField] private CanvasGroup _helperUI;
     [SerializeField] private CanvasGroup _inGameUI;
-    [SerializeField] private CanvasGroup _endGameUI;
+    [SerializeField] private CanvasGroup _rewardUI;
     [SerializeField] private CanvasGroup _youLoseUI;
     [SerializeField] private Button _tapToStartButton;
     [SerializeField] private PlayerBag _playerBag;
 
-    private float _deleay = 2f;
+    private float _deleay = 1f;
     private ProgressBar _levelProgressBar;
 
     private Car _car;
@@ -23,6 +24,7 @@ public class GameUiHandler : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         _levelProgressBar = GetComponent<ProgressBar>();
     }
 
@@ -65,10 +67,12 @@ public class GameUiHandler : MonoBehaviour
 
         yield return new WaitForSeconds(_deleay);
 
+        InterstitialAd.Show();
+        Time.timeScale = 0;
         _inGameUI.gameObject.SetActive(false);
         _helperUI.gameObject.SetActive(false);
-        _endGameUI.alpha = 1;
-        _endGameUI.blocksRaycasts = true;
+        _rewardUI.alpha = 1;
+        _rewardUI.blocksRaycasts = true;
     }
 
     

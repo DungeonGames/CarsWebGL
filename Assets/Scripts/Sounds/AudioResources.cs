@@ -6,11 +6,12 @@ public class AudioResources : MonoBehaviour
 
     [SerializeField] private Sound[] _sounds;
 
+    private bool _isMute = false;
     private const string MainTheme = "MainTheme";
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -39,21 +40,37 @@ public class AudioResources : MonoBehaviour
 
     public void PlaySound(string name)
     {
-        Sound sound = GetSoundByName(name);
-
-        if (sound == null)
+        if (_isMute == false)
         {
-            return;
-        }
+            Sound sound = GetSoundByName(name);
 
-        sound.Source.Play();
+            if (sound == null)
+            {
+                return;
+            }
+
+            sound.Source.Play();
+        }
+    }
+
+    public void Mute()
+    {
+        _isMute = true;
+        Sound sound = GetSoundByName(MainTheme);
+        sound.Source.Stop();
+    }
+
+    public void UnMute()
+    {
+        _isMute = false;
+        PlaySound(MainTheme);
     }
 
     private Sound GetSoundByName(string name)
     {
         for (int i = 0; i < _sounds.Length; i++)
         {
-            if(_sounds[i].Name == name)
+            if (_sounds[i].Name == name)
             {
                 return _sounds[i];
             }

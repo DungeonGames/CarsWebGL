@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
@@ -21,14 +19,16 @@ public class MoveHelperUI : MonoBehaviour
     {
         _inputToggle.KeyboardOn += OnInputChanged;
         _playerInput.Stopped += OnPlayerStoped;
-        _playerInput.Driving += OnPlayerDriving;
+        _playerInput.JoystikDriving += OnPlayerDriving;
+        _playerInput.KeyboardDriving += OnPlayerDriving;
     }
 
     private void OnDisable()
     {
         _inputToggle.KeyboardOn -= OnInputChanged;
         _playerInput.Stopped -= OnPlayerStoped;
-        _playerInput.Driving -= OnPlayerDriving;
+        _playerInput.JoystikDriving -= OnPlayerDriving;
+        _playerInput.KeyboardDriving -= OnPlayerDriving;
     }
 
     private void OnInputChanged(bool isKeyboard)

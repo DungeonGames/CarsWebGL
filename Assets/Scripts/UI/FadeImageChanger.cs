@@ -33,6 +33,7 @@ public class FadeImageChanger : MonoBehaviour
         _car = car;
         _car.LowHealh += OnLowHealt;
     }
+
     private void OnLowHealt()
     {
         _lowHealtTrigger.gameObject.SetActive(true);

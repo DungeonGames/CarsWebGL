@@ -6,7 +6,7 @@ public class TextSizeChanger : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
 
-    private float _scaleTo = 1.15f;
+    private float _scaleTo = 1.1f;
     private float _scaleSpeed = 1f;
 
     private void Start()

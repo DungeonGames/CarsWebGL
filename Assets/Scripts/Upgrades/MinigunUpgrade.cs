@@ -1,4 +1,6 @@
+using Lean.Localization;
 using SaveData;
+using UnityEngine;
 
 public class MinigunUpgrade : Upgrade
 {

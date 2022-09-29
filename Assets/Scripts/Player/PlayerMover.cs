@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _rotationSpeedJoystick;
+    [SerializeField] private float _rotationSpeedKeyboard;
 
     private float _speed;
     private Rigidbody _rigidbody;
@@ -22,7 +23,8 @@ public class PlayerMover : MonoBehaviour
     {
         _playerInput = GetComponent<PlayerInput>();
         _rigidbody = GetComponent<Rigidbody>();
-        _playerInput.Driving += Drive;
+        _playerInput.JoystikDriving += OnJoystickDrive;
+        _playerInput.KeyboardDriving += OnKeyboardDrive;
     }
 
     private void OnEnable()
@@ -33,10 +35,11 @@ public class PlayerMover : MonoBehaviour
     private void OnDisable()
     {
         _playerBag.CarChanged -= OnCarChanged;
-        _playerInput.Driving -= Drive;
+        _playerInput.JoystikDriving -= OnJoystickDrive;
+        _playerInput.KeyboardDriving -= OnKeyboardDrive;
     }
 
-    private void Drive(Vector2 direction)
+    private void OnJoystickDrive(Vector2 direction)
     {
         _direction.Set(direction.x, 0, direction.y);
         Vector3 offset = _direction.normalized * Time.deltaTime * _speed;
@@ -46,8 +49,16 @@ public class PlayerMover : MonoBehaviour
         {
             Quaternion newRotation = Quaternion.LookRotation(_direction, Vector3.up);
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, _rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, _rotationSpeedJoystick * Time.deltaTime);
         }
+    }
+
+    private void OnKeyboardDrive(Vector2 direction)
+    {
+        direction.y *= direction.y > 0 ? _speed : _speed;
+        _rigidbody.velocity = transform.forward.normalized * direction.y * Time.deltaTime;
+        float newRotation = direction.x * _rotationSpeedKeyboard * Time.deltaTime;       
+        transform.Rotate(0, newRotation, 0, Space.Self);
     }
 
     private void OnCarChanged(Car car) => _speed = car.MaxSpeed;

@@ -11,7 +11,8 @@ public class PlayerInput : MonoBehaviour
     private bool _enableInput = false;
     private bool _isKeyboardInput;
 
-    public event UnityAction<Vector2> Driving;
+    public event UnityAction<Vector2> JoystikDriving;
+    public event UnityAction<Vector2> KeyboardDriving;
     public event UnityAction Stopped;
 
     private void OnEnable()
@@ -35,30 +36,29 @@ public class PlayerInput : MonoBehaviour
             if (_isKeyboardInput)
             {
                 _joystick.gameObject.SetActive(false);
-
+               
                 float horizontalInput = Input.GetAxis("Horizontal");
                 float verticalInput = Input.GetAxis("Vertical");
-
                 _direction.Set(horizontalInput, verticalInput);
-                Driving?.Invoke(_direction);
-
-                if (_direction == Vector2.zero)
-                    Stopped?.Invoke();
+                KeyboardDriving?.Invoke(_direction);                             
             }
             else
             {
                 _joystick.gameObject.SetActive(true);
                 _direction.Set(_joystick.Horizontal, _joystick.Vertical);
-                Driving?.Invoke(_direction);
+                JoystikDriving?.Invoke(_direction);                
+            }
 
-                if (_direction == Vector2.zero)
-                    Stopped?.Invoke();
+            if (_direction == Vector2.zero)
+            {
+                Stopped?.Invoke();
             }
         }
         else
         {
             _direction = Vector2.zero;
-            Driving?.Invoke(_direction);
+            JoystikDriving?.Invoke(_direction);
+            KeyboardDriving?.Invoke(_direction);
         }
     }
 
