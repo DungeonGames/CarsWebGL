@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
     private List<Enemy> _pooledEnemys = new List<Enemy>();
     private int _spawned;
     private int _deads;
-    private int _rewardOnKill = 1000;
+    private int _rewardOnKill = 2;
 
     public event UnityAction<int, int> EnemyCountChanged;
     public event UnityAction GameStart;
