@@ -23,11 +23,13 @@ public class HoleTrap : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {      
+    {
         if (_isActivated)
         {
             if (other.TryGetComponent(out Boid enemy))
+            {
                 enemy.HoleTrapCath(_target);
+            }
         }
     }
 
@@ -54,10 +56,10 @@ public class HoleTrap : MonoBehaviour
 
         _animator.SetBool(CloseGate, true);
         _animator.SetBool(OpenGate, false);
+        _playerWall.enabled = false;
 
         yield return new WaitForSeconds(_delayForActivated);
 
-        _playerWall.enabled = false;
         _isActivated = false;
     }
 }

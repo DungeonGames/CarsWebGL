@@ -70,7 +70,7 @@ public class LevelReward : MonoBehaviour
     {
         if (_currentItem != null && _currentQuanity >= _currentItem.Quanity)
         {
-            _currentQuanity = 0;
+            _currentQuanity = 1;
             _currentItem.Unlocked();
         }
         else

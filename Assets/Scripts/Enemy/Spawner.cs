@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
     private List<Enemy> _pooledEnemys = new List<Enemy>();
     private int _spawned;
     private int _deads;
-    private int _rewardOnKill = 2;
+    private int _rewardOnKill = 1000;
 
     public event UnityAction<int, int> EnemyCountChanged;
     public event UnityAction GameStart;
@@ -46,6 +46,13 @@ public class Spawner : MonoBehaviour
         _gameStartHandler.GameStart += OnGameStarted;
     }
 
+    private void Start()
+    {
+        Initialize(_wave, _player);
+        _spawned = _pooledEnemys.Count;
+        _deads = 0;
+    }
+
     private void OnDisable()
     {
         _levelGenerator.WaveChange -= OnWaveChanged;
@@ -55,13 +62,6 @@ public class Spawner : MonoBehaviour
         {
             _pooledEnemys[i].Die -= OnEnemyDead;
         }
-    }
-
-    private void Start()
-    {
-        Initialize(_wave, _player);
-        _spawned = _pooledEnemys.Count;
-        _deads = 0;
     }
 
     private void OnWaveChanged(Wave wave) => _wave = wave;

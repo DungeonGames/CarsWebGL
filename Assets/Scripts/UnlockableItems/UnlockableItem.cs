@@ -15,6 +15,7 @@ public abstract class UnlockableItem : MonoBehaviour
     [SerializeField] private string _localizedItemName;
     [SerializeField] private string _localizedItemDescription;
     [SerializeField] private LeanToken _currentQuanityToken;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _leanGUI;
     [SerializeField] private TMP_Text _unlockedText;
     [SerializeField] private TMP_Text _quanityText;
 
@@ -30,8 +31,17 @@ public abstract class UnlockableItem : MonoBehaviour
     public string LocalizedItemName => _localizedItemName;
     public string LocalizedItemDescription => _localizedItemDescription;
 
-
     public event UnityAction<UnlockableItem> Unlock;
+
+    private void Awake()
+    {
+        Load();
+    }
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
 
     public abstract void Load();
 
@@ -44,6 +54,8 @@ public abstract class UnlockableItem : MonoBehaviour
     public void ShowProgress(int currentQuanity)
     {
         _progressBar.value = (float)currentQuanity / _quanity;
+        _currentQuanityToken.SetValue(_quanity - currentQuanity);
+        _leanGUI.UpdateLocalization();
 
         if (_quanity - currentQuanity == 0)
         {
@@ -54,7 +66,6 @@ public abstract class UnlockableItem : MonoBehaviour
         {
             _quanityText.gameObject.SetActive(true);
             _unlockedText.gameObject.SetActive(false);
-            _currentQuanityToken.SetValue(_quanity - currentQuanity);
         }
     }
 
@@ -62,7 +73,7 @@ public abstract class UnlockableItem : MonoBehaviour
     {
         _isUnlock = true;
         Unlock?.Invoke(this);
-        Load();
+        Save();
     }
 
     public void Buyed()

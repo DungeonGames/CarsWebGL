@@ -5,7 +5,6 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private GameUiHandler _gameHandler;
     [SerializeField] private Joystick _joystick;
-    [SerializeField] private SwitchToggleInput _toggleInput;
 
     private Vector2 _direction = new Vector2();
     private bool _enableInput = false;
@@ -19,34 +18,33 @@ public class PlayerInput : MonoBehaviour
     {
         _gameHandler.GameStart += StartMove;
         _gameHandler.GameEnd += StopMove;
-        _toggleInput.KeyboardOn += IsKeyboardInputOn;
-    }
-
-    private void OnDisable()
-    {
-        _gameHandler.GameStart -= StartMove;
-        _gameHandler.GameEnd -= StopMove;
-        _toggleInput.KeyboardOn -= IsKeyboardInputOn;
     }
 
     private void FixedUpdate()
     {
         if (_enableInput)
         {
+            if (Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                _isKeyboardInput = true;
+            }
+            if (_joystick.IsTouch)
+            {
+                _isKeyboardInput = false;
+            }
+
             if (_isKeyboardInput)
             {
-                _joystick.gameObject.SetActive(false);
-               
                 float horizontalInput = Input.GetAxis("Horizontal");
                 float verticalInput = Input.GetAxis("Vertical");
                 _direction.Set(horizontalInput, verticalInput);
-                KeyboardDriving?.Invoke(_direction);                             
+                KeyboardDriving?.Invoke(_direction);
             }
             else
             {
                 _joystick.gameObject.SetActive(true);
                 _direction.Set(_joystick.Horizontal, _joystick.Vertical);
-                JoystikDriving?.Invoke(_direction);                
+                JoystikDriving?.Invoke(_direction);
             }
 
             if (_direction == Vector2.zero)
@@ -62,9 +60,13 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        _gameHandler.GameStart -= StartMove;
+        _gameHandler.GameEnd -= StopMove;
+    }
+
     private void StartMove() => _enableInput = true;
 
     private void StopMove() => _enableInput = false;
-
-    private void IsKeyboardInputOn(bool state) => _isKeyboardInput = state;
 }

@@ -44,6 +44,7 @@ public class PlayerBag : MonoBehaviour
                 _currentCarIndex = i;
             }
         }
+
         Save();
     }
 
@@ -61,6 +62,7 @@ public class PlayerBag : MonoBehaviour
                 _currentGunIndex = i;
             }
         }
+
         Save();
     }
 

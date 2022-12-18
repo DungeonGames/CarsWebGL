@@ -11,6 +11,12 @@ public class SwitchToggleSound : MonoBehaviour
     private void Start()
     {
         _audioResources = FindObjectOfType<AudioResources>();
+
+        if (_audioResources.IsMute)
+        {
+            _handleOff.gameObject.SetActive(true);
+            _toggle.isOn = false;
+        }
     }
 
     public void ChangeState()

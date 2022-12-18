@@ -9,24 +9,13 @@ public class ShopScreen : MonoBehaviour
 
     private List<ItemView> _itemViews = new List<ItemView>();
 
-    private void OnEnable()
-    {
-        for (int i = 0; i < _unlockableItems.Count; i++)
-        {
-            _unlockableItems[i].Unlock += AddItem;
-        }
-    }
-
-    private void OnDisable()
-    {
-        for (int i = 0; i < _unlockableItems.Count; i++)
-        {
-            _unlockableItems[i].Unlock -= AddItem;
-        }
-    }
-
     private void Start()
     {
+        for (int i = 0; i < _unlockableItems.Count; i++)
+        {
+                AddItem(_unlockableItems[i]);
+        }
+
         UpdateInteractableButtons();
     }
 

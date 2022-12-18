@@ -15,6 +15,5 @@ public class MinigunBullet : Bullet
                 enemy.TakeDamage(_damage);
             }
         }
-
     }
 }

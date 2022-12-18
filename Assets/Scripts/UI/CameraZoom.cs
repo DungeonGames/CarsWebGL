@@ -16,16 +16,16 @@ public class CameraZoom : MonoBehaviour
     private float _newFollowOffsetY = 60f;
     private float _newTrackedObjectOffset = 5f;
 
+    private void OnEnable()
+    {
+        _gameStartHandler.GameStart += OnZoom;
+    }
+
     void Start()
     {
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
         _transposer = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
         _composer = _virtualCamera.GetCinemachineComponent<CinemachineComposer>();
-    }
-
-    private void OnEnable()
-    {
-        _gameStartHandler.GameStart += OnZoom;
     }
 
     private void OnDisable()

@@ -19,16 +19,16 @@ public class Mine : MonoBehaviour
 
     private const string _mineExplosion = "MineExplosion";
 
+    private void OnEnable()
+    {
+        _mineMaterialSeter.Ready += Explosion;
+    }
+
     private void Start()
     {
         _audioResources = FindObjectOfType<AudioResources>();
         _startPositionParticle = transform.position;
         _startPositionParticle.y = _startPositionParticleY;
-    }
-
-    private void OnEnable()
-    {
-        _mineMaterialSeter.Ready += Explosion;
     }
 
     private void OnDisable()

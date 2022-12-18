@@ -9,6 +9,8 @@ public class AudioResources : MonoBehaviour
     private bool _isMute = false;
     private const string MainTheme = "MainTheme";
 
+    public bool IsMute => _isMute;
+
     private void Awake()
     {
         if (Instance == null)

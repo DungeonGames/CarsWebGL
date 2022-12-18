@@ -3,37 +3,39 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class MoveHelperUI : MonoBehaviour
 {
-    [SerializeField] private SwitchToggleInput _inputToggle;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private GameObject _joystickView;
     [SerializeField] private GameObject _keyboardView;
 
     private CanvasGroup _canvasGroup;
 
+    private bool _isKeyboard = false;
+
+    private void OnEnable()
+    {
+        _playerInput.Stopped += OnPlayerStoped;
+        _playerInput.JoystikDriving += OnJoystickDriving;
+        _playerInput.KeyboardDriving += OnKeyboardDriving;
+    }
+
     private void Start()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    private void OnEnable()
-    {
-        _inputToggle.KeyboardOn += OnInputChanged;
-        _playerInput.Stopped += OnPlayerStoped;
-        _playerInput.JoystikDriving += OnPlayerDriving;
-        _playerInput.KeyboardDriving += OnPlayerDriving;
-    }
-
     private void OnDisable()
     {
-        _inputToggle.KeyboardOn -= OnInputChanged;
+
         _playerInput.Stopped -= OnPlayerStoped;
-        _playerInput.JoystikDriving -= OnPlayerDriving;
-        _playerInput.KeyboardDriving -= OnPlayerDriving;
+        _playerInput.JoystikDriving -= OnJoystickDriving;
+        _playerInput.KeyboardDriving -= OnKeyboardDriving;
     }
 
-    private void OnInputChanged(bool isKeyboard)
+    private void OnPlayerStoped()
     {
-        if (isKeyboard)
+        _canvasGroup.alpha = 1;
+
+        if (_isKeyboard)
         {
             _keyboardView.SetActive(true);
             _joystickView.SetActive(false);
@@ -45,7 +47,15 @@ public class MoveHelperUI : MonoBehaviour
         }
     }
 
-    private void OnPlayerStoped() => _canvasGroup.alpha = 1;
+    private void OnKeyboardDriving(Vector2 direction)
+    {
+        _canvasGroup.alpha = 0;
+        _isKeyboard = true;
+    }
 
-    private void OnPlayerDriving(Vector2 direction) => _canvasGroup.alpha = 0;
+    private void OnJoystickDriving(Vector2 direction)
+    {
+        _canvasGroup.alpha = 0;
+        _isKeyboard = false;
+    }
 }

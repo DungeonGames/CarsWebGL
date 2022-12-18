@@ -7,6 +7,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ProgressBar))]
 public class GameUiHandler : MonoBehaviour
 {
+    [SerializeField] private GameObject _coinsAndGemsText;
+    [SerializeField] private GameObject _soundBitton;
+    [SerializeField] private GameObject _healtBar;
     [SerializeField] private CanvasGroup _startUI;
     [SerializeField] private CanvasGroup _helperUI;
     [SerializeField] private CanvasGroup _inGameUI;
@@ -17,8 +20,8 @@ public class GameUiHandler : MonoBehaviour
 
     private float _deleay = 1f;
     private ProgressBar _levelProgressBar;
-
     private Car _car;
+
     public event UnityAction GameStart;
     public event UnityAction GameEnd;
 
@@ -48,11 +51,13 @@ public class GameUiHandler : MonoBehaviour
         _car = car;
         _car.Died += OnPlayerDied;
     }
+
     private void StartGame()
     {
         _startUI.gameObject.SetActive(false);
         _inGameUI.gameObject.SetActive(true);
         _helperUI.gameObject.SetActive(true);
+        _healtBar.SetActive(true);
         GameStart?.Invoke();
     }
 
@@ -71,17 +76,21 @@ public class GameUiHandler : MonoBehaviour
         Time.timeScale = 0;
         _inGameUI.gameObject.SetActive(false);
         _helperUI.gameObject.SetActive(false);
+        _coinsAndGemsText.SetActive(false);
+        _soundBitton.SetActive(false);
+        _healtBar.SetActive(false);
         _rewardUI.alpha = 1;
         _rewardUI.blocksRaycasts = true;
     }
-
-    
-
+   
     private void OnPlayerDied()
     {
         GameEnd?.Invoke();
         _youLoseUI.gameObject.SetActive(true);
         _inGameUI.gameObject.SetActive(false);
         _helperUI.gameObject.SetActive(false);
+        _coinsAndGemsText.SetActive(false);
+        _soundBitton.SetActive(false);
+        _healtBar.SetActive(false);
     }
 }

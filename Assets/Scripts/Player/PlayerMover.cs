@@ -19,6 +19,11 @@ public class PlayerMover : MonoBehaviour
         _playerBag = GetComponent<PlayerBag>();
     }
 
+    private void OnEnable()
+    {
+        _playerBag.CarChanged += OnCarChanged;
+    }
+
     public void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -27,17 +32,14 @@ public class PlayerMover : MonoBehaviour
         _playerInput.KeyboardDriving += OnKeyboardDrive;
     }
 
-    private void OnEnable()
-    {
-        _playerBag.CarChanged += OnCarChanged;
-    }
-
     private void OnDisable()
     {
         _playerBag.CarChanged -= OnCarChanged;
         _playerInput.JoystikDriving -= OnJoystickDrive;
         _playerInput.KeyboardDriving -= OnKeyboardDrive;
     }
+
+    private void OnCarChanged(Car car) => _speed = car.MaxSpeed;
 
     private void OnJoystickDrive(Vector2 direction)
     {
@@ -57,9 +59,7 @@ public class PlayerMover : MonoBehaviour
     {
         direction.y *= direction.y > 0 ? _speed : _speed;
         _rigidbody.velocity = transform.forward.normalized * direction.y * Time.deltaTime;
-        float newRotation = direction.x * _rotationSpeedKeyboard * Time.deltaTime;       
+        float newRotation = direction.x * _rotationSpeedKeyboard * Time.deltaTime;
         transform.Rotate(0, newRotation, 0, Space.Self);
     }
-
-    private void OnCarChanged(Car car) => _speed = car.MaxSpeed;
 }

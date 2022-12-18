@@ -34,13 +34,6 @@ public class MineMaterialSeter : MonoBehaviour
 
     private IEnumerator PrepareToExplosion()
     {
-        yield return new WaitForSeconds(_delay);
-        SetMaterial(_activatedMaterial);
-
-        yield return new WaitForSeconds(_delay);
-        SetMaterial(_defaultMaterial);
-
-        yield return new WaitForSeconds(_delay);
         SetMaterial(_activatedMaterial);
 
         yield return new WaitForSeconds(_delay);

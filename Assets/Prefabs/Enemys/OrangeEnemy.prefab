@@ -347,7 +347,6 @@ MonoBehaviour:
   - {fileID: 5979688635093160095}
   _defaultMaterial: {fileID: 2100000, guid: 5821b0edf6a3db9499477a3e547d1a8c, type: 2}
   _blackParttMaterial: {fileID: 2100000, guid: cc3b32b5e0609fd409bfed376701e703, type: 2}
-  _hitMaterial: {fileID: 2100000, guid: 6445829d226af404683c543b43337b47, type: 2}
   _dieMaterial: {fileID: 2100000, guid: 6735d440c1e89894198cc65651f69310, type: 2}
 --- !u!135 &8673638346034659817
 SphereCollider:
@@ -376,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: 63f639a5493c2184d9e205217c4b8174, type: 2}
   _minSpeed: 15
-  _maxSpeed: 20
+  _maxSpeed: 16
   position: {x: 0, y: 0, z: 0}
   forward: {x: 0, y: 0, z: 0}
   avgFlockHeading: {x: 0, y: 0, z: 0}

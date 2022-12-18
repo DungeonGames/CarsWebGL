@@ -12,7 +12,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private Transform _body;
     [SerializeField] private ParticleSystem _upgradeEffect;
 
-    protected AudioResources AudioResources;
+    private protected AudioResources AudioResources;
 
     private float _minDelayPerShot = 0.1f;
     private float _decreaseDelayPerShot = 0.01f;
@@ -21,18 +21,6 @@ public abstract class Gun : MonoBehaviour
     private Enemy _currentTraget;
 
     public Upgrade GunUpgrade => _upgrade;
-
-    private void Start()
-    {
-        AudioResources = FindObjectOfType<AudioResources>();
-        _timeRemaining = _delayPerShot;
-    }
-
-    private void Update()
-    {
-        if (_canFire)
-            PrepareToShoot();
-    }
 
     private void OnEnable()
     {
@@ -47,6 +35,18 @@ public abstract class Gun : MonoBehaviour
             _upgrade.Buyed += OnUpgradeBuyed;
             _upgrade.CurrentLevelChanged += OnCurrentLevelChanged;
         }
+    }
+
+    private void Start()
+    {
+        AudioResources = FindObjectOfType<AudioResources>();
+        _timeRemaining = _delayPerShot;
+    }
+
+    private void Update()
+    {
+        if (_canFire)
+            PrepareToShoot();
     }
 
     private void OnDisable()
@@ -76,11 +76,12 @@ public abstract class Gun : MonoBehaviour
         }
     }
 
-    public abstract void Shoot(Enemy enemy);
+    public void StartFire() => _canFire = true;
 
     public void StopFire() => _canFire = false;
 
-    public void StartFire() => _canFire = true;
+    public abstract void Shoot(Enemy enemy);
+
 
     private void OnUpgradeBuyed()
     {

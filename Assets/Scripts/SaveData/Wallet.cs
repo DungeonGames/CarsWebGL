@@ -58,6 +58,7 @@ public class Wallet : MonoBehaviour
     public void AddRewardOnKill(int coins)
     {
         Coins += coins;
+        ChangeCollectedText();
         Save();
     }
 

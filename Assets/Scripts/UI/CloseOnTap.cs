@@ -1,6 +1,4 @@
-using UnityEngine.EventSystems;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class CloseOnTap : MonoBehaviour
 {
@@ -19,14 +17,18 @@ public class CloseOnTap : MonoBehaviour
         if (_panelWithControlElements.gameObject.activeSelf == false)
         {
             if (_tapToPlay != null)
+            {
                 _tapToPlay.gameObject.SetActive(true);
+            }
 
             Time.timeScale = 1;
         }
         else
         {
             if (_tapToPlay != null)
+            {
                 _tapToPlay.gameObject.SetActive(false);
+            }
         }
     }
 }

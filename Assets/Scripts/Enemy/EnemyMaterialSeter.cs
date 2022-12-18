@@ -9,7 +9,6 @@ public class EnemyMaterialSeter : MonoBehaviour
     [SerializeField] private MeshRenderer[] _meshRenderers;
     [SerializeField] private Material _defaultMaterial;
     [SerializeField] private Material _blackParttMaterial;
-    [SerializeField] private Material _hitMaterial;
     [SerializeField] private Material _dieMaterial;
 
     private Enemy _enemy;
@@ -39,23 +38,23 @@ public class EnemyMaterialSeter : MonoBehaviour
         StartCoroutine(SwithHitMaterial());
     }
 
-    private void OnPrepareToDie(Enemy enemy)
-    {
-        StartCoroutine(SwitchDieMaterial());
-    }
-
     private IEnumerator SwithHitMaterial()
     {
-        Change(_hitMaterial, _hitMaterial);
+        Change(_dieMaterial, _blackParttMaterial);
 
         yield return new WaitForSeconds(_delay);
 
         Change(_defaultMaterial, _blackParttMaterial);
     }
 
+    private void OnPrepareToDie(Enemy enemy)
+    {
+        StartCoroutine(SwitchDieMaterial());
+    }
+
     private IEnumerator SwitchDieMaterial()
     {
-        Change(_hitMaterial, _hitMaterial);
+        Change(_dieMaterial, _blackParttMaterial);
 
         yield return new WaitForSeconds(_delay);
 

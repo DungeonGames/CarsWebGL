@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(EnemyMaterialSeter))]
 [RequireComponent(typeof(Boid))]
+[RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _damage;
@@ -14,16 +15,18 @@ public class Enemy : MonoBehaviour
 
     private float _currentHealth;
     private float _delayToDie = 1f;
+    private float _forceConntact = 30f;
     private PlayerMover _target;
     private EnemyMaterialSeter _materialSeter;
     private AudioResources _audioResources;
+    private Rigidbody _rigidbody;
     private Boid _boid;
     private Spawner _spawner;
     private bool _isAlive = true;
 
-    public bool IsAlive => _isAlive;
-
     private const string EnemyDied = "EnemyDied";
+
+    public bool IsAlive => _isAlive;
 
     public event UnityAction Hit;
     public event UnityAction<Enemy> PrepareToDie;
@@ -35,15 +38,16 @@ public class Enemy : MonoBehaviour
         _boid = GetComponent<Boid>();
     }
 
+    private void OnEnable()
+    {
+        _materialSeter.SwitchEnded += OnMaterialSwitchEnded;
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
     private void Start()
     {
         _audioResources = FindObjectOfType<AudioResources>();
         _currentHealth = _health;
-    }
-
-    private void OnEnable()
-    {
-        _materialSeter.SwitchEnded += OnMaterialSwitchEnded;
     }
 
     private void OnDisable()
@@ -56,6 +60,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out Car car))
         {
+            _rigidbody.AddForce(-transform.forward * _forceConntact, ForceMode.Impulse);
             car.TakeDamage(_damage);
         }
     }
@@ -95,16 +100,16 @@ public class Enemy : MonoBehaviour
         _audioResources.PlaySound(EnemyDied);
     }
 
-    private bool CanDecreaseHealth(float value)
+    private void OnMaterialSwitchEnded()
     {
-        return _currentHealth - value > 0;
+        StartCoroutine(DelayToDie(_delayToDie));
     }
 
     private void OnGameStarted() => _boid.SetTarget(_target.transform);
 
-    private void OnMaterialSwitchEnded()
+    private bool CanDecreaseHealth(float value)
     {
-        StartCoroutine(DelayToDie(_delayToDie));
+        return _currentHealth - value > 0;
     }
 
     private IEnumerator DelayToDie(float delay)

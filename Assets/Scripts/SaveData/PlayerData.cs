@@ -6,10 +6,10 @@ namespace SaveData
         public int CurrentCarIndex;
         public int CurrentGunIndex;
         public bool IsFirstRun = true;
-        public bool IsKeyboardInput = false;
         public bool[] IsUnlockableItemFlags = new bool[2];
-        public int CurrentUnlockableQuanity = 0;
+        public int CurrentUnlockableQuanity = 1;
         public int CurrentWave = 0;
+        public int CurrentLevel = 0;
         public int Coins;
         public int Gems;
         public int SedanLevel;

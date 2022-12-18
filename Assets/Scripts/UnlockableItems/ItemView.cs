@@ -12,7 +12,8 @@ public class ItemView : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private Image _gemImage;
     [SerializeField] private TMP_Text _price;
-    [SerializeField] private TMP_Text _buyed;
+    [SerializeField] private TMP_Text _buyedText;
+    [SerializeField] private TMP_Text _lockText;
     
     private UnlockableItem _unlockableItem;
 
@@ -32,16 +33,29 @@ public class ItemView : MonoBehaviour
 
     public void Render(UnlockableItem unlockableItem)
     {
-        if (unlockableItem.IsUnlock)
-        {
-            _sellButton.interactable = true;
-        }
-
         _unlockableItem = unlockableItem;
+
         _image.sprite = unlockableItem.Sprite;
         _price.text = unlockableItem.Price.ToString();
         _localizedName.TranslationName = unlockableItem.LocalizedItemName;
         _localizedDescription.TranslationName = unlockableItem.LocalizedItemDescription;
+
+        if (unlockableItem.IsUnlock)
+        {
+            _sellButton.interactable = true;
+            _lockText.gameObject.SetActive(false);
+            _price.gameObject.SetActive(true);
+            _gemImage.gameObject.SetActive(true);
+        }
+
+        if (unlockableItem.IsBuyedItem)
+        {
+            _sellButton.interactable = true;
+            _gemImage.gameObject.SetActive(false);
+            _price.gameObject.SetActive(false);
+            _lockText.gameObject.SetActive(false);
+            _buyedText.gameObject.SetActive(true);
+        }
     }
 
     public void DeactivateButton() => _sellButton.interactable = false;
@@ -50,7 +64,7 @@ public class ItemView : MonoBehaviour
     {
         _gemImage.gameObject.SetActive(false);
         _price.gameObject.SetActive(false);
-        _buyed.gameObject.SetActive(true);
+        _buyedText.gameObject.SetActive(true);
         _unlockableItem.Buyed();
     }
 

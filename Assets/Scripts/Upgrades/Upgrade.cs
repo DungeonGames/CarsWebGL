@@ -1,4 +1,5 @@
 using Lean.Localization;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,9 @@ public abstract class Upgrade : MonoBehaviour
 
     protected int _currentLevel;
 
+    private float _multiplier = 1.1f;
+    private int _startPrice = 100;
+
     public event UnityAction Buyed;
     public event UnityAction<int> CurrentLevelChanged;
 
@@ -24,12 +28,17 @@ public abstract class Upgrade : MonoBehaviour
     private void Awake()
     {
         Load();
+
+        if (_currentLevel > 0)
+        {
+            _price = _price * (int)Math.Pow(_multiplier, _currentLevel);
+        }
     }
 
     private void Start()
     {
         CurrentLevelChanged?.Invoke(_currentLevel);
-        _currentLevelToken.SetValue(_currentLevel);
+        _currentLevelToken.SetValue(_currentLevel);      
     }
 
     public abstract void Load();
@@ -47,6 +56,8 @@ public abstract class Upgrade : MonoBehaviour
     public void SellUpgrade()
     {
         _currentLevel++;
+        _price = (int)(_startPrice * Math.Pow(_multiplier, _currentLevel));
+        Debug.Log(_price);
         _currentLevelToken.SetValue(_currentLevel);
         LeanLocalization.UpdateTranslations();
         Buyed.Invoke();

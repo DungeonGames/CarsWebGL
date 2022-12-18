@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using Lean.Localization;
 
 public class WaveView : MonoBehaviour
