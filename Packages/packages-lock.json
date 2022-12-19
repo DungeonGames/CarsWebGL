@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.agava.defineswitchtool": {
+      "version": "https://github.com/tsentler/com.agava.defineswitchtool.git#1.0.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "eab1a225332dda244235cf5655bb8b583e8c48e5"
+    },
+    "com.agava.vkgames": {
+      "version": "https://github.com/punisherpete/com.agava.vkgames.git#1.1.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "95545446310191cf22364578584717651933831f"
+    },
     "com.agava.webutility": {
       "version": "https://github.com/forcepusher/com.agava.webutility.git#2.0.0",
       "depth": 0,

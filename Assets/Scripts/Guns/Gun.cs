@@ -5,7 +5,7 @@ public abstract class Gun : MonoBehaviour
 {
     [SerializeField] protected Bullet BulletTemplate;
     [SerializeField] protected ParticleSystem ShootParticle;
-
+    [SerializeField] protected CameraShake CameraShake;
     [SerializeField] private float _delayPerShot = 0.7f;
     [SerializeField] private Upgrade _upgrade;
     [SerializeField] private GameUiHandler _gameStartHandler;

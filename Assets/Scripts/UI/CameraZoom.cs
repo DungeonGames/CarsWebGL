@@ -21,7 +21,7 @@ public class CameraZoom : MonoBehaviour
         _gameStartHandler.GameStart += OnZoom;
     }
 
-    void Start()
+    private void Start()
     {
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
         _transposer = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>();

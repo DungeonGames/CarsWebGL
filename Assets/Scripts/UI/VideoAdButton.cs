@@ -23,7 +23,12 @@ public class VideoAdButton : MonoBehaviour
 
     public void ShowVideoAd()
     {
-        VideoAd.Show(null, Success);
+#if YANDEX_GAMES
+        Agava.YandexGames.VideoAd.Show(null, Success);
+#endif
+#if VK_GAMES
+        Agava.VKGames.VideoAd.Show(Success);
+#endif
     }
 
     private void OnSuccessCallback()

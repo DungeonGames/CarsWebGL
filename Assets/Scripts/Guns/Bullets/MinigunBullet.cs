@@ -13,6 +13,7 @@ public class MinigunBullet : Bullet
             if (enemy.IsAlive)
             {
                 enemy.TakeDamage(_damage);
+                enemy.Discard();
             }
         }
     }

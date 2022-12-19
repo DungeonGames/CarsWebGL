@@ -37,7 +37,6 @@ public class YandexLeaderboard : MonoBehaviour
         {
             PlayerAccount.RequestPersonalProfileDataPermission();
         };
-#endif
         Leaderboard.GetEntries(_leaderboardName, (result) =>
         {
             Debug.Log($"My rank = {result.userRank}");
@@ -60,6 +59,7 @@ public class YandexLeaderboard : MonoBehaviour
 
             _leaderboardView.ConstructLeaderboard(top5Players);
         });
+#endif
     }
 
     public void AddPlayerToLeaderboard(int score)
@@ -67,11 +67,11 @@ public class YandexLeaderboard : MonoBehaviour
 #if !UNITY_EDITOR
         if (!PlayerAccount.IsAuthorized)
             return;
-#endif
         Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>
         {
             Leaderboard.SetScore(_leaderboardName, score);
         });
+#endif
     }
 }
 

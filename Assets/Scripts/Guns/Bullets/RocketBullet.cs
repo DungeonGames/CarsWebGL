@@ -39,6 +39,7 @@ public class RocketBullet : Bullet
                 if (enemy.IsAlive)
                 {
                     enemy.TakeDamage(_damage);
+                    enemy.Discard();
                 }
             }
 

@@ -60,9 +60,9 @@ public class Enemy : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out Car car))
         {
-            _rigidbody.AddForce(-transform.forward * _forceConntact, ForceMode.Impulse);
+            Discard();
             car.TakeDamage(_damage);
-        }
+        }     
     }
 
     public void Init(PlayerMover target, Spawner spawner)
@@ -73,6 +73,11 @@ public class Enemy : MonoBehaviour
         _spawner = spawner;
         _target = target;
         _spawner.GameStart += OnGameStarted;
+    }
+
+    public void Discard()
+    {
+        _rigidbody.AddForce(-transform.forward * _forceConntact, ForceMode.Impulse);
     }
 
     public void TakeDamage(float value)

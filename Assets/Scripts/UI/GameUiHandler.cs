@@ -71,8 +71,12 @@ public class GameUiHandler : MonoBehaviour
         GameEnd?.Invoke();
 
         yield return new WaitForSeconds(_deleay);
-
-        InterstitialAd.Show();
+#if YANDEX_GAMES
+        Agava.YandexGames.InterstitialAd.Show();
+#endif
+#if VK_GAMES
+        Agava.VKGames.Interstitial.Show();
+#endif
         Time.timeScale = 0;
         _inGameUI.gameObject.SetActive(false);
         _helperUI.gameObject.SetActive(false);
