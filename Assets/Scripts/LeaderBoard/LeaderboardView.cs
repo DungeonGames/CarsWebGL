@@ -12,7 +12,7 @@ public class LeaderboardView : MonoBehaviour
     {
         ClearLeaderboard();
 
-        foreach(PlayerInfoLeaderboard info in playersInfo)
+        foreach (PlayerInfoLeaderboard info in playersInfo)
         {
             GameObject leaderboardElementInstance = Instantiate(_leaderboardElementPrefab, _parentObject);
 

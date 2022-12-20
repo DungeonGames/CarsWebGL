@@ -12,11 +12,14 @@ public class YandexLeaderboard : MonoBehaviour
 
     public void Construct(LeaderboardView leaderboard)
     {
+
         _leaderboardView = leaderboard;
+
     }
 
     public void FormListOfTopPlayers(bool test = false)
     {
+#if YANDEX_GAMES
         List<PlayerInfoLeaderboard> top5Players = new List<PlayerInfoLeaderboard>();
 
         if (test)
@@ -30,7 +33,6 @@ public class YandexLeaderboard : MonoBehaviour
 
             return;
         }
-#if !UNITY_EDITOR
         PlayerAccount.Authorize();
 
         if (PlayerAccount.IsAuthorized)
@@ -64,7 +66,8 @@ public class YandexLeaderboard : MonoBehaviour
 
     public void AddPlayerToLeaderboard(int score)
     {
-#if !UNITY_EDITOR
+#if YANDEX_GAMES
+        
         if (!PlayerAccount.IsAuthorized)
             return;
         Leaderboard.GetPlayerEntry(_leaderboardName, (result) =>

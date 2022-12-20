@@ -62,6 +62,13 @@ public class Wallet : MonoBehaviour
         Save();
     }
 
+    public void AddRewardOnJoinGroup(int coins)
+    {
+        Coins += coins;
+        ChangeCollectedText();
+        Save();
+    }
+
     private void Load()
     {
         var dataCoins = SaveSystem.Load<SaveData.PlayerData>(CoinsSave);

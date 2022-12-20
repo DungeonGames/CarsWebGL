@@ -29,16 +29,21 @@ public abstract class Upgrade : MonoBehaviour
     {
         Load();
 
-        if (_currentLevel > 0)
-        {
-            _price = _price * (int)Math.Pow(_multiplier, _currentLevel);
-        }
+        
     }
 
     private void Start()
-    {
+    {      
         CurrentLevelChanged?.Invoke(_currentLevel);
-        _currentLevelToken.SetValue(_currentLevel);      
+        _currentLevelToken.SetValue(_currentLevel);
+    }
+
+    private void OnEnable()
+    {
+        if (_currentLevel > 0)
+        {
+            _price = (int)(_startPrice * Math.Pow(_multiplier, _currentLevel));
+        }
     }
 
     public abstract void Load();
@@ -51,6 +56,7 @@ public abstract class Upgrade : MonoBehaviour
     {
         _currentLevelToken.SetValue(_currentLevel);
         LeanLocalization.UpdateTranslations();
+    
     }
 
     public void SellUpgrade()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Agava.YandexGames;
 using Lean.Localization;
@@ -10,8 +8,7 @@ public class LanguageChanger : MonoBehaviour
 
     private void Start()
     {
-#if !UNITY_EDITOR
-
+#if YANDEX_GAMES
         switch (YandexGamesSdk.Environment.i18n.lang)
         {
             case "en":
@@ -29,6 +26,7 @@ public class LanguageChanger : MonoBehaviour
         }
         Debug.Log(YandexGamesSdk.Environment.i18n.lang);
 #endif
+
 #if VK_GAMES
         _leanLocalization.SetCurrentLanguage("Russian");
 #endif

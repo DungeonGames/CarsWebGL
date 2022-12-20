@@ -16,6 +16,7 @@ public class GameUiHandler : MonoBehaviour
     [SerializeField] private CanvasGroup _rewardUI;
     [SerializeField] private CanvasGroup _youLoseUI;
     [SerializeField] private Button _tapToStartButton;
+    [SerializeField] private Button _rewardButton;
     [SerializeField] private PlayerBag _playerBag;
 
     private float _deleay = 1f;
@@ -35,7 +36,7 @@ public class GameUiHandler : MonoBehaviour
     {
         _playerBag.CarChanged += OnCarChanged;
         _tapToStartButton.onClick.AddListener(StartGame);
-        _levelProgressBar.LevelComplete += OnLevelComplete;        
+        _levelProgressBar.LevelComplete += OnLevelComplete;
     }
 
     private void OnDisable()
@@ -71,9 +72,11 @@ public class GameUiHandler : MonoBehaviour
         GameEnd?.Invoke();
 
         yield return new WaitForSeconds(_deleay);
+
 #if YANDEX_GAMES
         Agava.YandexGames.InterstitialAd.Show();
 #endif
+
 #if VK_GAMES
         Agava.VKGames.Interstitial.Show();
 #endif
@@ -83,10 +86,14 @@ public class GameUiHandler : MonoBehaviour
         _coinsAndGemsText.SetActive(false);
         _soundBitton.SetActive(false);
         _healtBar.SetActive(false);
+
+#if ITCHIO_GAMES
+        _rewardButton.gameObject.SetActive(false);
+#endif
         _rewardUI.alpha = 1;
         _rewardUI.blocksRaycasts = true;
     }
-   
+
     private void OnPlayerDied()
     {
         GameEnd?.Invoke();

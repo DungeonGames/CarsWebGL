@@ -26,6 +26,7 @@ public class VideoAdButton : MonoBehaviour
 #if YANDEX_GAMES
         Agava.YandexGames.VideoAd.Show(null, Success);
 #endif
+
 #if VK_GAMES
         Agava.VKGames.VideoAd.Show(Success);
 #endif

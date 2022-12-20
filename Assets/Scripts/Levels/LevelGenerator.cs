@@ -1,11 +1,13 @@
+# if YANDEX_GAMES
 using Agava.YandexGames;
+#endif
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private YandexLeaderboard _leaderboard;
+    //[SerializeField] private YandexLeaderboard _leaderboard;
     [SerializeField] private Level _firstLevel;
     [SerializeField] private List<Level> _levels;
     [SerializeField] private List<Wave> _waves;
@@ -58,7 +60,7 @@ public class LevelGenerator : MonoBehaviour
     {
         _currentWave++;
         _currentLevel = -1;
-        SaveLeaderboard();
+        //SaveLeaderboard();
         Save();
     }
 
@@ -86,7 +88,9 @@ public class LevelGenerator : MonoBehaviour
 
     private void SaveLeaderboard()
     {
-        _leaderboard.AddPlayerToLeaderboard(_currentWave + 1);  
+//#if !VK_GAMES
+//        _leaderboard.AddPlayerToLeaderboard(_currentWave + 1);  
+//#endif
     }
 
     private void Save()

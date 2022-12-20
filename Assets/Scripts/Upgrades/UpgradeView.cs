@@ -21,6 +21,7 @@ public class UpgradeView : MonoBehaviour
     private void OnEnable()
     {
         _sellButton.onClick.AddListener(OnButtonClick);
+        Render(_upgrade);
     }
 
     private void OnDisable()

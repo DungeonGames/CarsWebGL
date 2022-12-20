@@ -12,6 +12,7 @@ public class InitializeSDK : MonoBehaviour
 #if !CRAZY_GAMES
         StartCoroutine(Init());
 #endif
+
 #if CRAZY_GAMES
         SceneManager.LoadScene(1);
 #endif
@@ -22,17 +23,18 @@ public class InitializeSDK : MonoBehaviour
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield return new WaitForSeconds(0.1f);
+
 #elif YANDEX_GAMES
         while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
         {
             yield return Agava.YandexGames.YandexGamesSdk.Initialize();
         }
+
 #elif VK_GAMES
         while (Agava.VKGames.VKGamesSdk.Initialized == false)
         {     
             yield return Agava.VKGames.VKGamesSdk.Initialize();
         }
-
 #endif
         GameAnalyticsSDK.GameAnalytics.Initialize();
         SceneManager.LoadScene(1);
