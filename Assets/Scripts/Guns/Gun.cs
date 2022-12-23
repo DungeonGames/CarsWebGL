@@ -20,6 +20,8 @@ public abstract class Gun : MonoBehaviour
     private bool _canFire = false;
     private Enemy _currentTraget;
 
+    public float CurrentFireRate => _delayPerShot;
+    public float FireRateOnLevel => _decreaseDelayPerShot;
     public Upgrade GunUpgrade => _upgrade;
 
     private void OnEnable()
@@ -68,11 +70,27 @@ public abstract class Gun : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
+            float newEnemyDistance = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
+
             if (_currentTraget == null && enemy.IsAlive)
             {
                 _currentTraget = enemy;
                 enemy.PrepareToDie += OnDying;
             }
+            else
+            {
+                if (_currentTraget != null || enemy.IsAlive)
+                {
+                    float currentEnemyDistance = Vector3.Distance(transform.position, _currentTraget.gameObject.transform.position);
+
+                    if (newEnemyDistance < currentEnemyDistance)
+                    {
+                        _currentTraget.PrepareToDie -= OnDying;
+                        _currentTraget = enemy;
+                        enemy.PrepareToDie += OnDying;
+                    }
+                }               
+            }          
         }
     }
 

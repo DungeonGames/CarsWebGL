@@ -62,9 +62,9 @@ public class Wallet : MonoBehaviour
         Save();
     }
 
-    public void AddRewardOnJoinGroup(int coins)
+    public void AddRewardOnJoinGroup(int gems)
     {
-        Coins += coins;
+        Gems += gems;
         ChangeCollectedText();
         Save();
     }

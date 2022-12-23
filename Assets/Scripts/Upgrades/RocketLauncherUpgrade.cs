@@ -1,7 +1,10 @@
 using SaveData;
+using UnityEngine;
 
 public class RocketLauncherUpgrade : Upgrade
 {
+    [SerializeField] private Gun _gun;
+
     private const string RocketLauncherLevel = "LauncherLevel";
 
     public override PlayerData GetSaveSnapshot()
@@ -23,5 +26,11 @@ public class RocketLauncherUpgrade : Upgrade
     public override void Save()
     {
         SaveSystem.Save(RocketLauncherLevel, GetSaveSnapshot());
+    }
+
+    public override void SetValue()
+    {
+        _currentValue = _gun.CurrentFireRate;
+        _onLevelValue = _gun.FireRateOnLevel;
     }
 }

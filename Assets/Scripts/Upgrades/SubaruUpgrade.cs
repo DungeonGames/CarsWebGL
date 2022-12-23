@@ -1,7 +1,10 @@
 using SaveData;
+using UnityEngine;
 
 public class SubaruUpgrade : Upgrade
 {
+    [SerializeField] private Car _car;
+
     private const string SubaruLevel = "SubaruLevel";
 
     public override PlayerData GetSaveSnapshot()
@@ -23,5 +26,11 @@ public class SubaruUpgrade : Upgrade
     public override void Save()
     {
         SaveSystem.Save(SubaruLevel, GetSaveSnapshot());
+    }
+
+    public override void SetValue()
+    {
+        _currentValue = _car.MaxHealth;
+        _onLevelValue = _car.IncreasesValue;
     }
 }

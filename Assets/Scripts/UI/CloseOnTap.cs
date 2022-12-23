@@ -4,10 +4,17 @@ public class CloseOnTap : MonoBehaviour
 {
     [SerializeField] private GameObject _panelWithControlElements;
     [SerializeField] private GameObject _tapToPlay;
+    [SerializeField] private bool _isVKElement = false;
 
     private void Start()
     {
-        _panelWithControlElements.SetActive(false);
+        CheckIsVKElement();
+    }
+
+    public void ChangeVKState()
+    {
+        _isVKElement = false;
+        CheckIsVKElement();
     }
 
     public void CloseSelf()
@@ -29,6 +36,19 @@ public class CloseOnTap : MonoBehaviour
             {
                 _tapToPlay.gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void CloseTapToPlayPanel()
+    {
+        _tapToPlay.gameObject.SetActive(false);
+    }
+
+    private void CheckIsVKElement()
+    {
+        if (_isVKElement == false)
+        {
+            _panelWithControlElements.SetActive(false);
         }
     }
 }

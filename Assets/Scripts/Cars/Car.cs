@@ -15,6 +15,8 @@ public class Car : MonoBehaviour
 
     public Upgrade CarUpgrade => _upgrade;
     public float MaxSpeed => _maxSpeed;
+    public float MaxHealth => _health;
+    public float IncreasesValue => _increaseMaxHealth;
 
     public event UnityAction LowHealh;
     public event UnityAction Died;

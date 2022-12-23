@@ -788,7 +788,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 1
   scriptingDefineSymbols:
-    WebGL: ITCHIO_GAMES
+    WebGL: VK_GAMES
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
