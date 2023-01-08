@@ -66,6 +66,12 @@ public class LevelGenerator : MonoBehaviour
         Save();
     }
 
+    public void ShowLeaderboard()
+    {
+        PlayerAccount.Authorize();
+        _leaderboard.FormListOfTopPlayers();
+    }
+
     private void Load()
     {
         var dataFirstRun = SaveSystem.Load<SaveData.PlayerData>(FirsRun);

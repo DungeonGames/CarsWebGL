@@ -9,6 +9,9 @@ public class CloseOnTap : MonoBehaviour
     private void Start()
     {
         CheckIsVKElement();
+#if YANDEX_GAMES
+        _panelWithControlElements.SetActive(false);
+#endif
     }
 
     public void ChangeVKState()

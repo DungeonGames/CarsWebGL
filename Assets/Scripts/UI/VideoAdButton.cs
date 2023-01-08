@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class VideoAdButton : MonoBehaviour
 {
     [SerializeField] private LevelReward _levelReward;
+    [SerializeField] private AudioResources _audioResources;
     [SerializeField] private Button _videoAdButton;
 
     public event Action Success;
@@ -25,10 +26,12 @@ public class VideoAdButton : MonoBehaviour
     {
 #if YANDEX_GAMES
         Agava.YandexGames.VideoAd.Show(null, Success);
+        _audioResources.Mute();
 #endif
 
 #if VK_GAMES
         Agava.VKGames.VideoAd.Show(Success);
+        _audioResources.Mute();
 #endif
     }
 
@@ -36,5 +39,6 @@ public class VideoAdButton : MonoBehaviour
     {
         _levelReward.InceaseCoinReward();
         _videoAdButton.interactable = false;
+        _audioResources.UnMute();
     }
 }

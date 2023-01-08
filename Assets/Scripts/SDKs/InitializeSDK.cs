@@ -18,26 +18,39 @@ public class InitializeSDK : MonoBehaviour
 #endif
     }
 
-#if !CRAZY_GAMES
+    private void OnEnable()
+    {
+        Initialized += OnInitialized;
+    }
+
+    private void OnDisable()
+    {
+        Initialized -= OnInitialized;
+    }
+
     private IEnumerator Init()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield return new WaitForSeconds(0.1f);
 
 #elif YANDEX_GAMES
-        while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
-        {
-            yield return Agava.YandexGames.YandexGamesSdk.Initialize();
-        }
+
+        yield return Agava.YandexGames.YandexGamesSdk.Initialize(Initialized);
 
 #elif VK_GAMES
-        while (Agava.VKGames.VKGamesSdk.Initialized == false)
-        {     
-            yield return Agava.VKGames.VKGamesSdk.Initialize();
-        }
+            
+        yield return Agava.VKGames.VKGamesSdk.Initialize(Initialized);
+        
 #endif
         GameAnalyticsSDK.GameAnalytics.Initialize();
+
+        yield return new WaitForSeconds(1f);
+
         SceneManager.LoadScene(1);
     }
-#endif
+
+    private void OnInitialized()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
