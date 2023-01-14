@@ -18,6 +18,7 @@ public class GameUiHandler : MonoBehaviour
     [SerializeField] private Button _tapToStartButton;
     [SerializeField] private Button _rewardButton;
     [SerializeField] private PlayerBag _playerBag;
+    [SerializeField] private AudioResources _audioResources;
 
     private float _deleay = 1f;
     private ProgressBar _levelProgressBar;
@@ -74,7 +75,7 @@ public class GameUiHandler : MonoBehaviour
         yield return new WaitForSeconds(_deleay);
 
 #if YANDEX_GAMES
-        Agava.YandexGames.InterstitialAd.Show();
+        Agava.YandexGames.InterstitialAd.Show(OnOpenVideo, OnClose);
 #endif
 
 #if VK_GAMES
@@ -103,5 +104,23 @@ public class GameUiHandler : MonoBehaviour
         _coinsAndGemsText.SetActive(false);
         _soundBitton.SetActive(false);
         _healtBar.SetActive(false);
+    }
+
+    private void OnOpenVideo()
+    {
+        _audioResources.Mute();
+    }
+
+    private void OnClose(bool state)
+    {
+        if (state == true)
+        {
+            _audioResources.UnMute();
+        }
+    }
+
+    private void OnError()
+    {
+        _audioResources.UnMute();
     }
 }

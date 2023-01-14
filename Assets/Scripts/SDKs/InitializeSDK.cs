@@ -30,6 +30,8 @@ public class InitializeSDK : MonoBehaviour
 
     private IEnumerator Init()
     {
+        GameAnalyticsSDK.GameAnalytics.Initialize();
+
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield return new WaitForSeconds(0.1f);
 
@@ -42,7 +44,6 @@ public class InitializeSDK : MonoBehaviour
         yield return Agava.VKGames.VKGamesSdk.Initialize(Initialized);
         
 #endif
-        GameAnalyticsSDK.GameAnalytics.Initialize();
 
         yield return new WaitForSeconds(1f);
 

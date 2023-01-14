@@ -660,6 +660,7 @@ MonoBehaviour:
   _panelWithControlElements: {fileID: 1672334738}
   _tapToPlay: {fileID: 871671963}
   _isVKElement: 1
+  _isYandexElement: 0
 --- !u!114 &112092347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2649,9 +2650,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 997896108}
-        m_TargetAssemblyTypeName: LevelGenerator, Assembly-CSharp
-        m_MethodName: ShowLeaderboard
+      - m_Target: {fileID: 2038770368}
+        m_TargetAssemblyTypeName: YandexLeaderboard, Assembly-CSharp
+        m_MethodName: Authorized
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2714,6 +2715,7 @@ MonoBehaviour:
   _panelWithControlElements: {fileID: 1266734356}
   _tapToPlay: {fileID: 871671963}
   _isVKElement: 0
+  _isYandexElement: 1
 --- !u!1 &472497318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,6 +2994,7 @@ MonoBehaviour:
   _panelWithControlElements: {fileID: 1950254551}
   _tapToPlay: {fileID: 871671963}
   _isVKElement: 0
+  _isYandexElement: 0
 --- !u!1 &489261745
 GameObject:
   m_ObjectHideFlags: 0
@@ -7097,7 +7100,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -14.005488, y: 55.042, z: -32.909332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9239,6 +9242,7 @@ MonoBehaviour:
   _panelWithControlElements: {fileID: 1324556448}
   _tapToPlay: {fileID: 871671963}
   _isVKElement: 0
+  _isYandexElement: 0
 --- !u!1001 &1282185823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11886,6 +11890,7 @@ MonoBehaviour:
   _panelWithControlElements: {fileID: 890837413}
   _tapToPlay: {fileID: 871671963}
   _isVKElement: 0
+  _isYandexElement: 0
 --- !u!1 &1672334738
 GameObject:
   m_ObjectHideFlags: 0
@@ -17787,7 +17792,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790947158}
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -14.005488, y: 55.042, z: -32.909332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

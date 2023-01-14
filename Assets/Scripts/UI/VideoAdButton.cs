@@ -12,33 +12,39 @@ public class VideoAdButton : MonoBehaviour
 
     public event Action Success;
 
-    private void OnEnable()
-    {
-        Success += OnSuccessCallback;
-    }
-
-    private void OnDisable()
-    {
-        Success -= OnSuccessCallback;
-    }
-
     public void ShowVideoAd()
     {
 #if YANDEX_GAMES
-        Agava.YandexGames.VideoAd.Show(null, Success);
-        _audioResources.Mute();
+        Agava.YandexGames.VideoAd.Show(OnOpenVideo, OmRewarded, OnClose);
+        
 #endif
 
 #if VK_GAMES
-        Agava.VKGames.VideoAd.Show(Success);
-        _audioResources.Mute();
+        Agava.VKGames.VideoAd.Show(OnVKCallback);
+        OnOpenVideo();
 #endif
     }
 
-    private void OnSuccessCallback()
+    private void OnOpenVideo()
+    {
+        _audioResources.Mute();
+    }
+
+    private void OmRewarded()
     {
         _levelReward.InceaseCoinReward();
         _videoAdButton.interactable = false;
+    }
+
+    private void OnClose()
+    {
         _audioResources.UnMute();
+    }
+
+    private void OnVKCallback()
+    {
+        _levelReward.InceaseCoinReward();
+        _videoAdButton.interactable = false;
+        OnClose();
     }
 }
