@@ -27,7 +27,9 @@ public class VideoAdButton : MonoBehaviour
 
     private void OnOpenVideo()
     {
-        _audioResources.Mute();
+        //    _audioResources.Mute();
+        AudioListener.pause = true;
+        AudioListener.volume = 0f;
     }
 
     private void OmRewarded()
@@ -38,7 +40,9 @@ public class VideoAdButton : MonoBehaviour
 
     private void OnClose()
     {
-        _audioResources.UnMute();
+        //_audioResources.UnMute();
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
     }
 
     private void OnVKCallback()

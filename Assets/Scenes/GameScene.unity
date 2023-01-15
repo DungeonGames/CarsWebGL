@@ -3600,7 +3600,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 118.95
+  m_fontSize: 109.05
   m_fontSizeBase: 162.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7100,7 +7100,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: -14.005488, y: 55.042, z: -32.909332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17792,7 +17792,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790947158}
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: -14.005488, y: 55.042, z: -32.909332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25160,6 +25160,7 @@ MonoBehaviour:
   _tapToStartButton: {fileID: 871671965}
   _rewardButton: {fileID: 2736062}
   _playerBag: {fileID: 1152474032190762816}
+  _audioResources: {fileID: 0}
 --- !u!114 &2038770362
 MonoBehaviour:
   m_ObjectHideFlags: 0

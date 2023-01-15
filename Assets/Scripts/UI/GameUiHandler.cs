@@ -1,4 +1,5 @@
 using Agava.YandexGames;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -27,6 +28,13 @@ public class GameUiHandler : MonoBehaviour
     public event UnityAction GameStart;
     public event UnityAction GameEnd;
 
+    private Action _adOpen;
+    private Action _adOffline;
+    private Action<bool> _adClose;
+    private Action<string> _adError;
+
+
+
     private void Awake()
     {
         Time.timeScale = 1;
@@ -38,6 +46,10 @@ public class GameUiHandler : MonoBehaviour
         _playerBag.CarChanged += OnCarChanged;
         _tapToStartButton.onClick.AddListener(StartGame);
         _levelProgressBar.LevelComplete += OnLevelComplete;
+        _adOpen += OnOpenVideo;
+        _adOffline += OnAdOffline;
+        _adClose += OnClose;
+        _adError += OnError;
     }
 
     private void OnDisable()
@@ -46,6 +58,10 @@ public class GameUiHandler : MonoBehaviour
         _tapToStartButton.onClick.RemoveListener(StartGame);
         _levelProgressBar.LevelComplete -= OnLevelComplete;
         _car.Died -= OnPlayerDied;
+        _adOpen -= OnOpenVideo;
+        _adOffline -= OnAdOffline;
+        _adClose -= OnClose;
+        _adError -= OnError;
     }
 
     private void OnCarChanged(Car car)
@@ -75,7 +91,7 @@ public class GameUiHandler : MonoBehaviour
         yield return new WaitForSeconds(_deleay);
 
 #if YANDEX_GAMES
-        Agava.YandexGames.InterstitialAd.Show(OnOpenVideo, OnClose);
+        Agava.YandexGames.InterstitialAd.Show(_adOpen, _adClose, _adError, _adOffline);
 #endif
 
 #if VK_GAMES
@@ -108,19 +124,32 @@ public class GameUiHandler : MonoBehaviour
 
     private void OnOpenVideo()
     {
-        _audioResources.Mute();
+        //_audioResources.Mute();
+        AudioListener.pause = true;
+        AudioListener.volume = 0f;
     }
 
     private void OnClose(bool state)
     {
         if (state == true)
         {
-            _audioResources.UnMute();
+            //_audioResources.UnMute();
+            AudioListener.pause = false;
+            AudioListener.volume = 1f;
         }
     }
 
-    private void OnError()
+    private void OnError(string obj)
     {
-        _audioResources.UnMute();
+        //_audioResources.UnMute();
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
+    }
+
+
+    private void OnAdOffline()
+    {
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
     }
 }
