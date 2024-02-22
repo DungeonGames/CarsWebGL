@@ -67,12 +67,12 @@ public class Social : MonoBehaviour
 
     public void OnJoinButtonCkick()
     {
-        Agava.VKGames.Community.InviteToIJuniorGroup(JoinSucces);
+        //Agava.VKGames.Community.InviteToIJuniorGroup(JoinSucces);
     }
 
     public void OnInviteButtonClick()
     {
-        Agava.VKGames.SocialInteraction.InviteFriends();
+        //Agava.VKGames.SocialInteraction.InviteFriends();
     }
 
     private void OnJoinGroup()
