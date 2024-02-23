@@ -20,5 +20,5 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void Init(Enemy tartget) => _target = tartget;
+    public void Init(Enemy target) => _target = target;
 }

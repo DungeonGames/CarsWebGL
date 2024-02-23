@@ -14,6 +14,7 @@ public class Minigun : Gun
         AudioResources.PlaySound(MinigunShoot);
         var bullet = Instantiate(BulletTemplate, _shootPoint.position, Quaternion.identity);
         bullet.Init(enemy);
+        bullet.gameObject.GetComponent<MinigunBullet>().Init(_damage);
         var shootParticle = Instantiate(ShootParticle, _shootPoint.position, _shootPoint.rotation);
         shootParticle.transform.SetParent(_shootPoint);
         Instantiate(_shellParticle, _shellPoint.position, Quaternion.identity);

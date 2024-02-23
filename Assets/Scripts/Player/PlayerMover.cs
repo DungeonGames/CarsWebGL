@@ -7,8 +7,8 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _rotationSpeedJoystick;
     [SerializeField] private float _rotationSpeedKeyboard;
-
-    private float _speed;
+    [SerializeField] private float _speed;
+    
     private Rigidbody _rigidbody;
     private PlayerInput _playerInput;
     private PlayerBag _playerBag;
@@ -61,5 +61,10 @@ public class PlayerMover : MonoBehaviour
         _rigidbody.velocity = transform.forward.normalized * direction.y * Time.deltaTime;
         float newRotation = direction.x * _rotationSpeedKeyboard * Time.deltaTime;
         transform.Rotate(0, newRotation, 0, Space.Self);
+    }
+
+    public void UpgradeSpeed(float percentBonus)
+    {
+        _speed *= percentBonus;
     }
 }

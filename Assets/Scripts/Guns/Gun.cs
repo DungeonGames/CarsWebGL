@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public abstract class Gun : MonoBehaviour
 {
+    [SerializeField] protected float _damage;
+    
     [SerializeField] protected Bullet BulletTemplate;
     [SerializeField] protected ParticleSystem ShootParticle;
     [SerializeField] protected CameraShake CameraShake;
@@ -34,7 +36,7 @@ public abstract class Gun : MonoBehaviour
 
         if (_upgrade != null)
         {
-            _upgrade.Buyed += OnUpgradeBuyed;
+            _upgrade.Buyed += OnUpgradeBought;
             _upgrade.CurrentLevelChanged += OnCurrentLevelChanged;
         }
     }
@@ -61,7 +63,7 @@ public abstract class Gun : MonoBehaviour
 
         if (_upgrade != null)
         {
-            _upgrade.Buyed += OnUpgradeBuyed;
+            _upgrade.Buyed += OnUpgradeBought;
             _upgrade.CurrentLevelChanged -= OnCurrentLevelChanged;
         }
     }
@@ -99,9 +101,8 @@ public abstract class Gun : MonoBehaviour
     public void StopFire() => _canFire = false;
 
     public abstract void Shoot(Enemy enemy);
-
-
-    private void OnUpgradeBuyed()
+    
+    private void OnUpgradeBought()
     {
         _delayPerShot -= _decreaseDelayPerShot;
 
@@ -144,5 +145,15 @@ public abstract class Gun : MonoBehaviour
     {
         enemy.PrepareToDie -= OnDying;
         _currentTraget = null;
+    }
+
+    public void UpgradeDamage(float bonusPercent)
+    {
+        _damage *= bonusPercent;
+    }
+
+    public void UpgradeFireRate(float bonusPercent)
+    {
+        _delayPerShot /= bonusPercent;
     }
 }

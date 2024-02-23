@@ -1,17 +1,25 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(EnemyMaterialSeter))]
 [RequireComponent(typeof(Boid))]
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private float _statsScaleCoef = 1; // defines how fast stats scale depends on level
+    [SerializeField] private float _statsSpread = 1.5f;
+    
     [SerializeField] private float _damage;
     [SerializeField] private float _health;
     [SerializeField] private float _maxScale = 2.5f;
     [SerializeField] private float _minScale = 1.5f;
     [SerializeField] private ParticleSystem _dieEffect;
+
+    private int _level = 1; // current wave in fact
+    private float _lowerBoundStatsCoef;
+    private float _upperBoundStatsCoef;
 
     private float _currentHealth;
     private float _delayToDie = 1f;
@@ -36,6 +44,7 @@ public class Enemy : MonoBehaviour
     {
         _materialSeter = GetComponent<EnemyMaterialSeter>();
         _boid = GetComponent<Boid>();
+        InitEnemy(1); // should be removed
     }
 
     private void OnEnable()
@@ -44,10 +53,21 @@ public class Enemy : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
+    /// <summary>
+    /// Should be called at instantiation. Sets enemy health and damage
+    /// </summary>
+    /// <param name="level"></param>
+    public void InitEnemy(int level)
+    {
+        _level = level;
+        _lowerBoundStatsCoef = _statsScaleCoef * Mathf.Sqrt(_level);
+        _upperBoundStatsCoef = _statsScaleCoef * Mathf.Sqrt(_statsSpread * _level);
+        _currentHealth = GetRealHealth();
+    }
+
     private void Start()
     {
         _audioResources = FindObjectOfType<AudioResources>();
-        _currentHealth = _health;
     }
 
     private void OnDisable()
@@ -61,8 +81,22 @@ public class Enemy : MonoBehaviour
         if (collision.collider.TryGetComponent(out Car car))
         {
             Discard();
-            car.TakeDamage(_damage);
-        }     
+            car.TakeDamage(GetRealDamage());
+        }
+    }
+
+    private float GetRealDamage()
+    {
+        float damage = Random.Range(_damage * _lowerBoundStatsCoef, _damage * _upperBoundStatsCoef);
+
+        return damage;
+    }
+
+    private float GetRealHealth()
+    {
+        float health = Random.Range(_health * _lowerBoundStatsCoef, _health * _upperBoundStatsCoef);
+
+        return health;
     }
 
     public void Init(PlayerMover target, Spawner spawner)

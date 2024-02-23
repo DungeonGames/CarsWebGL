@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class MinigunBullet : Bullet
 {
-    private int _damage = 1;
+    private float _damage = 1;
 
+    public void Init(float damage)
+    {
+        _damage = damage;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
