@@ -25,9 +25,9 @@ public class ProgressBar : MonoBehaviour
         _slider.value = (float)(maxValue - value) / maxValue;
         Debug.Log(maxValue + " " + value);
 
-        if(_slider.value == _slider.maxValue)
-        {
-            LevelComplete?.Invoke();
-        }
+        // if(_slider.value == _slider.maxValue)
+        // {
+        //     LevelComplete?.Invoke();
+        // }
     }
 }
