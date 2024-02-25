@@ -44,7 +44,6 @@ public class Enemy : MonoBehaviour
     {
         _materialSeter = GetComponent<EnemyMaterialSeter>();
         _boid = GetComponent<Boid>();
-        InitEnemy(1); // should be removed
     }
 
     private void OnEnable()
@@ -57,12 +56,17 @@ public class Enemy : MonoBehaviour
     /// Should be called at instantiation. Sets enemy health and damage
     /// </summary>
     /// <param name="level"></param>
-    public void InitEnemy(int level)
+    public void InitEnemy(int level, PlayerMover player)
     {
         _level = level;
         _lowerBoundStatsCoef = _statsScaleCoef * Mathf.Sqrt(_level);
         _upperBoundStatsCoef = _statsScaleCoef * Mathf.Sqrt(_statsSpread * _level);
         _currentHealth = GetRealHealth();
+        
+        _boid.Initialize(null);
+        float randomScale = Random.Range(_minScale, _maxScale);
+        transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+        _target = player;
     }
 
     private void Start()

@@ -9,6 +9,8 @@ public class WavesManager : MonoBehaviour
 
     public int CurrentWave => _currentWave;
 
+    public Action WaveStarted;
+    
     public Action MinorWaveEnded;
     public Action MajorWaveEnded;
 
@@ -24,5 +26,10 @@ public class WavesManager : MonoBehaviour
         }
 
         _currentWave++;
+    }
+
+    private void StartWave()
+    {
+        WaveStarted?.Invoke();
     }
 }
