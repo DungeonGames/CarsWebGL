@@ -13,8 +13,10 @@ public class EnemySpawnerController : MonoBehaviour
     [SerializeField] private WavesManager _wavesManager;
 
     private List<GameObject> _spawnedEnemies = new List<GameObject>();
-
+    private int _enemiesToSpawn;
+    
     public event Action MapClear;
+    public event Action<int, int> EnemyCountChanged;
     
     private void Awake()
     {
@@ -23,10 +25,10 @@ public class EnemySpawnerController : MonoBehaviour
     }
 
     private void GetReadyToSpawn()
-    {
-        int enemiesToSpawn = 10 + _wavesManager.CurrentWave * 2;
+    { 
+        _enemiesToSpawn = 10 + _wavesManager.CurrentWave * 2;
 
-        Spawn(enemiesToSpawn);
+        Spawn(_enemiesToSpawn);
     }
 
     public void Spawn(int enemiesToSpawn)
@@ -40,16 +42,19 @@ public class EnemySpawnerController : MonoBehaviour
         for (int i = 0; i < spawnersToUse; i++)
         {
             _spawnedEnemies.AddRange(availableSpawners[i]
-                .SpawnPool(enemiesToSpawn, _wavesManager.CurrentWave, _playerMover));
+                .SpawnPool(enemiesPerSpawner, _wavesManager.CurrentWave, _playerMover));
         }
         
         FindObjectOfType<BoidManager>().Init(_spawnedEnemies);
+        _enemiesToSpawn = _spawnedEnemies.Count;
     }
     
     public void RemoveFromPool(GameObject toRemove)
     {
         _spawnedEnemies.Remove(toRemove);
         FindObjectOfType<BoidManager>().DeleteBoid(toRemove);
+        
+        EnemyCountChanged?.Invoke(_spawnedEnemies.Count, _enemiesToSpawn);
 
         if (_spawnedEnemies.Count == 0)
         {

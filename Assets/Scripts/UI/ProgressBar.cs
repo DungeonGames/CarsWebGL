@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private Spawner _spawner;
+    [SerializeField] private EnemySpawnerController _spawner;
 
     public event UnityAction LevelComplete;
 
@@ -22,7 +22,8 @@ public class ProgressBar : MonoBehaviour
 
     private void OnValueChanged(int value, int maxValue)
     {
-        _slider.value = (float)value / maxValue;
+        _slider.value = (float)(maxValue - value) / maxValue;
+        Debug.Log(maxValue + " " + value);
 
         if(_slider.value == _slider.maxValue)
         {

@@ -3,21 +3,24 @@ using Lean.Localization;
 
 public class WaveView : MonoBehaviour
 {
-    [SerializeField] private LevelGenerator _levelGenerator;
+    [SerializeField] private WavesManager _wavesManager;
+    //[SerializeField] private LevelGenerator _levelGenerator;
     [SerializeField] private LeanToken _currentWaveToken;
 
     private void OnEnable()
     {
-        _levelGenerator.NumberWaveChange += OnCurrentWaveChanged;
+        _wavesManager.MinorWaveEnded += OnCurrentWaveChanged;
+        _wavesManager.MajorWaveEnded += OnCurrentWaveChanged;
     }
 
     private void OnDisable()
     {
-        _levelGenerator.NumberWaveChange -= OnCurrentWaveChanged;
+        _wavesManager.MinorWaveEnded -= OnCurrentWaveChanged;
+        _wavesManager.MajorWaveEnded -= OnCurrentWaveChanged;
     }
 
-    private void OnCurrentWaveChanged(int waveNumber)
+    private void OnCurrentWaveChanged()
     {
-        _currentWaveToken.SetValue(waveNumber);
+        _currentWaveToken.SetValue(_wavesManager.CurrentWave);
     }
 }
