@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using GameAnalyticsSDK.Setup;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -8,21 +10,26 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private EnemyWaveContentGenerator _waveGenerator;
 
+    [SerializeField] private float _spawnRadius = 7f;
+
     public SpawnZone Zone = SpawnZone.FirstZone;
 
-    public void SpawnPool(int spawnCount, int level, PlayerMover player)
+    public List<GameObject> SpawnPool(int spawnCount, int level, PlayerMover player)
     {
+        List<GameObject> spawned = new List<GameObject>();
         var wave = _waveGenerator.GenerateWave(spawnCount);
 
         foreach (var enemy in wave.SpawnPool)
         {
-            Spawn(enemy, level, player);
+            spawned.Add(Spawn(enemy, level, player));
         }
+
+        return spawned;
     }
-    
-    private void Spawn(EnemyToSpawn enemyToSpawn, int level, PlayerMover player)
+
+    private GameObject Spawn(EnemyToSpawn enemyToSpawn, int level, PlayerMover player)
     {
-        GameObject prefab = new GameObject();
+        GameObject prefab;
 
         switch (enemyToSpawn.Type)
         {
@@ -35,11 +42,21 @@ public class EnemySpawner : MonoBehaviour
             case EnemyToSpawn.EnemyType.Orange:
                 prefab = _orangeEnemy;
                 break;
+            default:
+                prefab = _greenEnemy;
+                break;
         }
 
-        GameObject enemyInstance = Instantiate(prefab, transform.position, Quaternion.identity);
-        
+        GameObject enemyInstance = Instantiate(prefab, GetSpawnPos(), Quaternion.identity);
+
         enemyInstance.GetComponent<Enemy>().InitEnemy(level, player);
+
+        return enemyInstance;
+    }
+
+    private Vector3 GetSpawnPos()
+    {
+        return transform.position + Random.insideUnitSphere * _spawnRadius;
     }
 
     public enum SpawnZone
@@ -48,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
         SecondZone = 2,
         ThirdZone = 3,
         FourthZone = 4,
-        FifthZone =  5,
+        FifthZone = 5,
         SixthZone = 6,
         SeventhZone = 7,
         EightZone = 8,

@@ -6,8 +6,8 @@ public class EnemyWaveContentGenerator : MonoBehaviour
 {
     [SerializeField] private WavesManager _wavesManager;
 
-    private int _blueSpawnChance = 1;
-    private int _orangeSpawnChance = 0;
+    private int _blueSpawnChance = 50;
+    private int _orangeSpawnChance = 60;
 
     private float _blueGrowthCoef = 0.4f;
     private float _orangeGrowthCoef = 0.2f;
@@ -19,9 +19,7 @@ public class EnemyWaveContentGenerator : MonoBehaviour
     private void Start()
     {
         EnemyWave wave = GenerateWave();
-        Debug.Log(wave.SpawnPool.Count);
     }
-
 
     public void MinorWaveFinished()
     {

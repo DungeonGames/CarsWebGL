@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(EnemyMaterialSeter))]
 [RequireComponent(typeof(Boid))]
@@ -39,6 +41,7 @@ public class Enemy : MonoBehaviour
     public event UnityAction Hit;
     public event UnityAction<Enemy> PrepareToDie;
     public event UnityAction<Enemy> Die;
+    
 
     private void Awake()
     {
@@ -77,7 +80,7 @@ public class Enemy : MonoBehaviour
     private void OnDisable()
     {
         _materialSeter.SwitchEnded -= OnMaterialSwitchEnded;
-        _spawner.GameStart -= OnGameStarted;
+        //_spawner.GameStart -= OnGameStarted;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -128,6 +131,7 @@ public class Enemy : MonoBehaviour
         else
         {
             _isAlive = false;
+            FindObjectOfType<EnemySpawnerController>().RemoveFromPool(gameObject);
             PrepareToDie?.Invoke(this);
             _boid.enabled = false;
         }
@@ -157,11 +161,13 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator DelayToDie(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForEndOfFrame();
 
         gameObject.SetActive(false);
         Die?.Invoke(this);
         _audioResources.PlaySound(EnemyDied);
         Instantiate(_dieEffect, transform.position, Quaternion.identity);
+        
+        Destroy(gameObject);
     }
 }
