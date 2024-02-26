@@ -8,17 +8,17 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ProgressBar))]
 public class GameUIHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject _coinsAndGemsText;
+    //[SerializeField] private GameObject _coinsAndGemsText;
     [SerializeField] private GameObject _soundBitton;
     [SerializeField] private GameObject _healtBar;
     [SerializeField] private CanvasGroup _startUI;
     [SerializeField] private CanvasGroup _helperUI;
     [SerializeField] private CanvasGroup _inGameUI;
-    [SerializeField] private CanvasGroup _rewardUI;
+    //[SerializeField] private CanvasGroup _rewardUI;
     [SerializeField] private CanvasGroup _youLoseUI;
     [SerializeField] private Button _tapToStartButton;
-    [SerializeField] private Button _rewardButton;
-    [SerializeField] private PlayerBag _playerBag;
+    //[SerializeField] private Button _rewardButton;
+    //[SerializeField] private PlayerBag _playerBag;
     [SerializeField] private AudioResources _audioResources;
 
     private float _deleay = 1f;
@@ -41,7 +41,7 @@ public class GameUIHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerBag.CarChanged += OnCarChanged;
+        //_playerBag.CarChanged += OnCarChanged;
         _tapToStartButton.onClick.AddListener(StartGame);
         _levelProgressBar.LevelComplete += OnLevelComplete;
         _adOpen += OnOpenVideo;
@@ -52,10 +52,10 @@ public class GameUIHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerBag.CarChanged -= OnCarChanged;
+        //_playerBag.CarChanged -= OnCarChanged;
         _tapToStartButton.onClick.RemoveListener(StartGame);
         _levelProgressBar.LevelComplete -= OnLevelComplete;
-        _car.Died -= OnPlayerDied;
+        //_car.Died -= OnPlayerDied;
         _adOpen -= OnOpenVideo;
         _adOffline -= OnAdOffline;
         _adClose -= OnClose;
@@ -98,15 +98,15 @@ public class GameUIHandler : MonoBehaviour
         Time.timeScale = 0;
         _inGameUI.gameObject.SetActive(false);
         _helperUI.gameObject.SetActive(false);
-        _coinsAndGemsText.SetActive(false);
+        //_coinsAndGemsText.SetActive(false);
         _soundBitton.SetActive(false);
         _healtBar.SetActive(false);
 
 #if ITCHIO_GAMES
         _rewardButton.gameObject.SetActive(false);
 #endif
-        _rewardUI.alpha = 1;
-        _rewardUI.blocksRaycasts = true;
+        //_rewardUI.alpha = 1;
+        //_rewardUI.blocksRaycasts = true;
     }
 
     private void OnPlayerDied()
@@ -115,7 +115,7 @@ public class GameUIHandler : MonoBehaviour
         _youLoseUI.gameObject.SetActive(true);
         _inGameUI.gameObject.SetActive(false);
         _helperUI.gameObject.SetActive(false);
-        _coinsAndGemsText.SetActive(false);
+        //_coinsAndGemsText.SetActive(false);
         _soundBitton.SetActive(false);
         _healtBar.SetActive(false);
     }

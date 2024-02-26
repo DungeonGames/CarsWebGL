@@ -34,6 +34,7 @@ public class EnemySpawnerController : MonoBehaviour
     public void Spawn(int enemiesToSpawn)
     {
         List<EnemySpawner> availableSpawners = GetAllAvailableSpawners();
+        Debug.Log(availableSpawners.Count());
 
         int spawnersToUse = Random.Range(1, availableSpawners.Count + 1);
 
@@ -64,7 +65,7 @@ public class EnemySpawnerController : MonoBehaviour
 
     private List<EnemySpawner> GetAllAvailableSpawners()
     {
-        int currentWaveZone = 10; //(int)_wavesManager.BigStage; 
+        int currentWaveZone = (int)_wavesManager.BigStage; 
 
         List<EnemySpawner> result = _spawners
             .Where(spawner => (int)spawner.Zone <= currentWaveZone)
