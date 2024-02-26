@@ -4,8 +4,6 @@
 public class Boid : MonoBehaviour
 {
     [SerializeField] private BoidSettings _settings;
-    [SerializeField] private float _minSpeed;
-    [SerializeField] private float _maxSpeed;
 
     [HideInInspector]
     public Vector3 position;
@@ -34,7 +32,6 @@ public class Boid : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         cachedTransform = transform;
-        SetMinMaxSpeed(_minSpeedOnStart, _maxSpeedOnStart);
     }
 
     public void Initialize(Transform target)
@@ -51,7 +48,6 @@ public class Boid : MonoBehaviour
     public void SetTarget(Transform target)
     {
         _target = target;
-        SetMinMaxSpeed(_minSpeed, _maxSpeed);
     }
 
     public void HoleTrapCath(Transform target)
@@ -110,12 +106,6 @@ public class Boid : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, _target.position, speed * Time.deltaTime);
         }
-    }
-
-    private void SetMinMaxSpeed(float minSpeed, float maxSpeed)
-    {
-        _settings.minSpeed = minSpeed;
-        _settings.maxSpeed = maxSpeed;
     }
 
     private Vector3 SteerTowards(Vector3 vector)

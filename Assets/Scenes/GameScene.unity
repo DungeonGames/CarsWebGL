@@ -1847,6 +1847,7 @@ GameObject:
   - component: {fileID: 273699349}
   - component: {fileID: 273699348}
   - component: {fileID: 273699352}
+  - component: {fileID: 273699353}
   m_Layer: 0
   m_Name: TournamentTest
   m_TagString: Untagged
@@ -1940,6 +1941,23 @@ MonoBehaviour:
   - {fileID: 564216042}
   - {fileID: 103121533}
   - {fileID: 1441365884}
+  _wavesManager: {fileID: 273699349}
+--- !u!114 &273699353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273699347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8ab845244874bff91ad9e20c452b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movement: {fileID: 1152474032190762813}
+  _currentGun: {fileID: 1914346330}
+  _minorUpdateCoef: 1.01
+  _majorUpgradeCoef: 1.1
   _wavesManager: {fileID: 273699349}
 --- !u!1 &278932573
 GameObject:
@@ -3716,7 +3734,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130.55
+  m_fontSize: 106.55
   m_fontSizeBase: 162.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7119,7 +7137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: -3e-45, z: 1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: -14.005488, y: 55.042, z: -32.909332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9584,7 +9602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.54200006}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2.1290588}
+  m_AnchoredPosition: {x: 0, y: 2.1290474}
   m_SizeDelta: {x: 1920, y: -4.258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323447997
@@ -17730,7 +17748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790947158}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: -3e-45, z: 1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: -14.005488, y: 55.042, z: -32.909332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30299,7 +30317,7 @@ PrefabInstance:
     - target: {fileID: 9095418594070841619, guid: 74a181f179e18894cb0e4112b47c738f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30447,7 +30465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98987b58d5e98064e8fb996b32948599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 10
   BulletTemplate: {fileID: 9011840314324903770, guid: 190e716c2371a8a42a3da5fbee4d210e,
     type: 3}
   ShootParticle: {fileID: 198879403692676820, guid: 01e91ba42e028824b86d47ee5f416589,
