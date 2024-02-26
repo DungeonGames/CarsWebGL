@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Wallet _wallet;
     [SerializeField] private LevelGenerator _levelGenerator;
     [SerializeField] private PlayerMover _player;
-    [SerializeField] private GameUiHandler _gameStartHandler;
+    [SerializeField] private GameUIHandler _gameStartHandler;
     [SerializeField] private EnemyWalls _enemyWalls;
     [SerializeField] private float _spawnRadius = 15f;
     [SerializeField] private Color _color;

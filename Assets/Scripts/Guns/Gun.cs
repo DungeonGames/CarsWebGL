@@ -10,7 +10,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected CameraShake CameraShake;
     [SerializeField] private float _delayPerShot = 0.7f;
     [SerializeField] private Upgrade _upgrade;
-    [SerializeField] private GameUiHandler _gameStartHandler;
+    [SerializeField] private GameUIHandler _gameStartHandler;
     [SerializeField] private Transform _body;
     [SerializeField] private ParticleSystem _upgradeEffect;
 

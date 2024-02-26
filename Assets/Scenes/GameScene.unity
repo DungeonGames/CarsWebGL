@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44230866, g: 0.49134886, b: 0.57122487, a: 1}
+  m_IndirectSpecularColor: {r: 0.44230816, g: 0.4913481, b: 0.57122386, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1917,6 +1917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameStageWavesCount: 5
   _enemySpawner: {fileID: 273699350}
+  _gameUi: {fileID: 2038770360}
 --- !u!114 &273699350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3863,7 +3864,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.55
+  m_fontSize: 162
   m_fontSizeBase: 162.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9972,7 +9973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.54200006}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2.1290474}
+  m_AnchoredPosition: {x: 0, y: 2.1290512}
   m_SizeDelta: {x: 1920, y: -4.258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323447997

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(ProgressBar))]
-public class GameUiHandler : MonoBehaviour
+public class GameUIHandler : MonoBehaviour
 {
     [SerializeField] private GameObject _coinsAndGemsText;
     [SerializeField] private GameObject _soundBitton;
@@ -32,9 +32,7 @@ public class GameUiHandler : MonoBehaviour
     private Action _adOffline;
     private Action<bool> _adClose;
     private Action<string> _adError;
-
-
-
+    
     private void Awake()
     {
         Time.timeScale = 1;

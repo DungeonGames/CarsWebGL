@@ -36,6 +36,8 @@ public class Enemy : MonoBehaviour
     private const string EnemyDied = "EnemyDied";
 
     public bool IsAlive => _isAlive;
+    public float LowerBoundStatsCoef => _lowerBoundStatsCoef;
+    public float UpperBoundStatsCoef => _upperBoundStatsCoef;
 
     public event UnityAction Hit;
     public event UnityAction<Enemy> PrepareToDie;
