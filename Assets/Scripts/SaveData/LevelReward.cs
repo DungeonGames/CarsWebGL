@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Wallet))]
-[RequireComponent(typeof(GameUiHandler))]
+[RequireComponent(typeof(GameUIHandler))]
 public class LevelReward : MonoBehaviour
 {
     [SerializeField] private int _coinsReward;
@@ -16,7 +16,7 @@ public class LevelReward : MonoBehaviour
     private int _currentQuanity;
     private int _coinMultiplier = 2;
     private Wallet _wallet;
-    private GameUiHandler _gameHandler;
+    private GameUIHandler _gameHandler;
     private UnlockableItem _currentItem;
 
     public int CoinsReward => _coinsReward;
@@ -28,7 +28,7 @@ public class LevelReward : MonoBehaviour
     private void Awake()
     {
         _wallet = GetComponent<Wallet>();
-        _gameHandler = GetComponent<GameUiHandler>();
+        _gameHandler = GetComponent<GameUIHandler>();
 
         _isUnlockableFlags = new bool[_unlockableItems.Count];
 

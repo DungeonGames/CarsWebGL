@@ -5,7 +5,7 @@ using Cinemachine;
 [RequireComponent(typeof(CinemachineVirtualCamera))]
 public class CameraZoom : MonoBehaviour
 {
-    [SerializeField] private GameUiHandler _gameStartHandler;
+    [SerializeField] private GameUIHandler _gameStartHandler;
     [SerializeField] private float _speed;
 
     private CinemachineVirtualCamera _virtualCamera;

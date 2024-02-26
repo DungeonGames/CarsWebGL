@@ -19,8 +19,7 @@ public class Boid : MonoBehaviour
     public Vector3 centreOfFlockmates;
     [HideInInspector]
     public int numPerceivedFlockmates;
-
-
+    
     private float _minSpeedOnStart = 10f;
     private float _maxSpeedOnStart = 25f;
     private bool _isHoleTrapCath = false;
@@ -28,8 +27,11 @@ public class Boid : MonoBehaviour
     private Transform cachedTransform;
     private Transform _target;
 
+    private Enemy _enemy;
+
     private void Awake()
     {
+        _enemy = GetComponent<Enemy>();
         _rigidbody = GetComponent<Rigidbody>();
         cachedTransform = transform;
     }
@@ -41,8 +43,14 @@ public class Boid : MonoBehaviour
         position = cachedTransform.position;
         forward = cachedTransform.forward;
 
-        float startSpeed = (_settings.minSpeed + _settings.maxSpeed) / 2;
+        float startSpeed = GetRealSpeed();
         velocity = transform.forward * startSpeed;
+    }
+
+    private float GetRealSpeed()
+    {
+        return Random.Range(_settings.minSpeed * _enemy.LowerBoundStatsCoef,
+            _settings.maxSpeed * _enemy.UpperBoundStatsCoef);
     }
 
     public void SetTarget(Transform target)

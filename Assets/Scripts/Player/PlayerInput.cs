@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private GameUiHandler _gameHandler;
+    [SerializeField] private GameUIHandler _gameHandler;
     [SerializeField] private Joystick _joystick;
 
     private Vector2 _direction = new Vector2();

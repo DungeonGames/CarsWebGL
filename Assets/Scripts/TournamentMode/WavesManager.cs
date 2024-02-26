@@ -6,6 +6,7 @@ public class WavesManager : MonoBehaviour
 {
     [SerializeField] private int _gameStageWavesCount;
     [SerializeField] private EnemySpawnerController _enemySpawner;
+    [SerializeField] private GameUIHandler _gameUi;
 
     private int _currentWave = 1;
 
@@ -20,8 +21,7 @@ public class WavesManager : MonoBehaviour
     private void Start()
     {
         BigStage = 1;
-        StartWave();
-
+        _gameUi.GameStart += StartWave;
         _enemySpawner.MapClear += FinishWave;
     }
 
