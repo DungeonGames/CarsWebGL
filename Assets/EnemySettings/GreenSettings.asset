@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6194ee95dedb4d71a8fe738abba0f47, type: 3}
   m_Name: GreenSettings
   m_EditorClassIdentifier: 
-  minSpeed: 5
-  maxSpeed: 10
-  perceptionRadius: 10
-  avoidanceRadius: 30
-  maxSteerForce: 8
-  alignWeight: 2
+  minSpeed: 10
+  maxSpeed: 25
+  perceptionRadius: 6
+  avoidanceRadius: 50
+  maxSteerForce: 15
+  alignWeight: 7
   cohesionWeight: 1.5
   seperateWeight: 1
-  targetWeight: 4
+  targetWeight: 6
   obstacleMask:
     serializedVersion: 2
     m_Bits: 4294967295

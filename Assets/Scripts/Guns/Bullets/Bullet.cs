@@ -18,6 +18,10 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Init(Enemy target) => _target = target;

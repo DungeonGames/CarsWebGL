@@ -25,13 +25,12 @@ public class Enemy : MonoBehaviour
 
     private float _currentHealth;
     private float _delayToDie = 1f;
-    private float _forceConntact = 30f;
-    private PlayerMover _target;
+    private float _forceConntact = 20f;
     private EnemyMaterialSeter _materialSeter;
     private AudioResources _audioResources;
     private Rigidbody _rigidbody;
     private Boid _boid;
-    private Spawner _spawner;
+    //private Spawner _spawner;
     private bool _isAlive = true;
 
     private const string EnemyDied = "EnemyDied";
@@ -66,10 +65,9 @@ public class Enemy : MonoBehaviour
         _upperBoundStatsCoef = _statsScaleCoef * Mathf.Sqrt(_statsSpread * _level);
         _currentHealth = GetRealHealth();
         
-        _boid.Initialize(null);
+        _boid.Initialize(player.transform);
         float randomScale = Random.Range(_minScale, _maxScale);
         transform.localScale = new Vector3(randomScale, randomScale, randomScale);
-        _target = player;
     }
 
     private void Start()
@@ -108,12 +106,11 @@ public class Enemy : MonoBehaviour
 
     public void Init(PlayerMover target, Spawner spawner)
     {
-        _boid.Initialize(null);
+        _boid.Initialize(target.transform);
         float randomScale = Random.Range(_minScale, _maxScale);
         transform.localScale = new Vector3(randomScale, randomScale, randomScale);
-        _spawner = spawner;
-        _target = target;
-        _spawner.GameStart += OnGameStarted;
+        //_spawner = spawner;
+        //_spawner.GameStart += OnGameStarted;
     }
 
     public void Discard()
@@ -152,7 +149,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(DelayToDie(_delayToDie));
     }
 
-    private void OnGameStarted() => _boid.SetTarget(_target.transform);
+    //private void OnGameStarted() => _boid.SetTarget(_target.transform);
 
     private bool CanDecreaseHealth(float value)
     {

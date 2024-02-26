@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44230816, g: 0.4913481, b: 0.57122386, a: 1}
+  m_IndirectSpecularColor: {r: 0.44230866, g: 0.49134886, b: 0.57122487, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1268,7 +1268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.54200006}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.119628906, y: 2.128891}
+  m_AnchoredPosition: {x: -0.119628906, y: 2.1288834}
   m_SizeDelta: {x: 2.2399902, y: -4.258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174832601
@@ -1511,7 +1511,7 @@ Transform:
   m_GameObject: {fileID: 219441517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.6, y: 6.2, z: 131.5}
+  m_LocalPosition: {x: -11.9, y: 6.2, z: 111.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3716,7 +3716,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 162
+  m_fontSize: 130.55
   m_fontSizeBase: 162.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7119,7 +7119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -3e-45, z: 1e-45, w: 0.92387956}
   m_LocalPosition: {x: -14.005488, y: 55.042, z: -32.909332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17730,7 +17730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790947158}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -3e-45, z: 1e-45, w: 0.92387956}
   m_LocalPosition: {x: -14.005488, y: 55.042, z: -32.909332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30290,6 +30290,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007289604095164760, guid: 74a181f179e18894cb0e4112b47c738f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095418594070841619, guid: 74a181f179e18894cb0e4112b47c738f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
