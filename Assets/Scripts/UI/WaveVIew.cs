@@ -4,7 +4,6 @@ using Lean.Localization;
 public class WaveView : MonoBehaviour
 {
     [SerializeField] private WavesManager _wavesManager;
-    //[SerializeField] private LevelGenerator _levelGenerator;
     [SerializeField] private LeanToken _currentWaveToken;
 
     private void OnEnable()

@@ -9,7 +9,6 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected ParticleSystem ShootParticle;
     [SerializeField] protected CameraShake CameraShake;
     [SerializeField] private float _delayPerShot = 0.7f;
-    [SerializeField] private Upgrade _upgrade;
     [SerializeField] private GameUIHandler _gameStartHandler;
     [SerializeField] private Transform _body;
     [SerializeField] private ParticleSystem _upgradeEffect;
@@ -22,9 +21,6 @@ public abstract class Gun : MonoBehaviour
     private bool _canFire = false;
     private Enemy _currentTraget;
 
-    public float CurrentFireRate => _delayPerShot;
-    public float FireRateOnLevel => _decreaseDelayPerShot;
-    public Upgrade GunUpgrade => _upgrade;
 
     private void OnEnable()
     {
@@ -32,12 +28,6 @@ public abstract class Gun : MonoBehaviour
         {
             _gameStartHandler.GameStart += StartFire;
             _gameStartHandler.GameEnd += StopFire;
-        }
-
-        if (_upgrade != null)
-        {
-            _upgrade.Buyed += OnUpgradeBought;
-            _upgrade.CurrentLevelChanged += OnCurrentLevelChanged;
         }
     }
 
@@ -59,12 +49,6 @@ public abstract class Gun : MonoBehaviour
         {
             _gameStartHandler.GameStart -= StartFire;
             _gameStartHandler.GameEnd -= StopFire;
-        }
-
-        if (_upgrade != null)
-        {
-            _upgrade.Buyed += OnUpgradeBought;
-            _upgrade.CurrentLevelChanged -= OnCurrentLevelChanged;
         }
     }
 

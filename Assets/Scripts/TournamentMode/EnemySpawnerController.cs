@@ -34,7 +34,6 @@ public class EnemySpawnerController : MonoBehaviour
     public void Spawn(int enemiesToSpawn)
     {
         List<EnemySpawner> availableSpawners = GetAllAvailableSpawners();
-        Debug.Log(availableSpawners.Count());
 
         int spawnersToUse = Random.Range(1, availableSpawners.Count + 1);
 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using GameAnalyticsSDK.Setup;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour

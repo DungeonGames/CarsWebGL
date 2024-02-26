@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(EnemyMaterialSeter))]
@@ -30,7 +28,6 @@ public class Enemy : MonoBehaviour
     private AudioResources _audioResources;
     private Rigidbody _rigidbody;
     private Boid _boid;
-    //private Spawner _spawner;
     private bool _isAlive = true;
 
     private const string EnemyDied = "EnemyDied";
@@ -104,15 +101,6 @@ public class Enemy : MonoBehaviour
         float health = Random.Range(_health * _lowerBoundStatsCoef, _health * _upperBoundStatsCoef);
 
         return health;
-    }
-
-    public void Init(PlayerMover target, Spawner spawner)
-    {
-        _boid.Initialize(target.transform);
-        float randomScale = Random.Range(_minScale, _maxScale);
-        transform.localScale = new Vector3(randomScale, randomScale, randomScale);
-        //_spawner = spawner;
-        //_spawner.GameStart += OnGameStarted;
     }
 
     public void Discard()

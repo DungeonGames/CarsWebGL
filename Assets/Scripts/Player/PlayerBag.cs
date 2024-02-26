@@ -20,7 +20,6 @@ public class PlayerBag : MonoBehaviour
 
     private void Start()
     {
-        Load();
         _currentCar = _cars[_currentCarIndex];
         _currentCar.gameObject.SetActive(true);
         CarChanged?.Invoke(_currentCar);
@@ -44,8 +43,6 @@ public class PlayerBag : MonoBehaviour
                 _currentCarIndex = i;
             }
         }
-
-        Save();
     }
 
     public void ActivateNewGun(Gun newGun)
@@ -62,32 +59,5 @@ public class PlayerBag : MonoBehaviour
                 _currentGunIndex = i;
             }
         }
-
-        Save();
-    }
-
-    private void Load()
-    {
-        var dataCar = SaveSystem.Load<SaveData.PlayerData>(CurrentCar);
-        var dataGun = SaveSystem.Load<SaveData.PlayerData>(CurrentGun);
-        _currentCarIndex = dataCar.CurrentCarIndex;
-        _currentGunIndex = dataGun.CurrentGunIndex;
-    }
-
-    private void Save()
-    {
-        SaveSystem.Save(CurrentCar, GetSaveSnapshot());
-        SaveSystem.Save(CurrentGun, GetSaveSnapshot());
-    }
-
-    private SaveData.PlayerData GetSaveSnapshot()
-    {
-        var data = new SaveData.PlayerData()
-        {
-             CurrentCarIndex = _currentCarIndex,
-            CurrentGunIndex = _currentGunIndex,
-        };
-
-        return data;
     }
 }

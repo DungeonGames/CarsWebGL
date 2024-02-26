@@ -20,8 +20,6 @@ public class Boid : MonoBehaviour
     [HideInInspector]
     public int numPerceivedFlockmates;
     
-   // private float _minSpeedOnStart = 10f;
-    //private float _maxSpeedOnStart = 25f;
     private bool _isHoleTrapCath = false;
     private Rigidbody _rigidbody;
     private Transform cachedTransform;
