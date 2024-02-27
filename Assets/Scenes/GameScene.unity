@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44230866, g: 0.49134886, b: 0.57122487, a: 1}
+  m_IndirectSpecularColor: {r: 0.44230816, g: 0.4913481, b: 0.57122386, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -173,6 +173,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -672,6 +674,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 12
@@ -725,6 +729,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 10
@@ -762,6 +768,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -905,6 +913,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -1069,6 +1079,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 9
@@ -1190,6 +1202,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e5b71f0569945dd80fd3ff6cc868a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startSpawners:
+  - {fileID: 1204533145}
+  - {fileID: 1053973916}
+  - {fileID: 219441518}
   _spawners:
   - {fileID: 1204533145}
   - {fileID: 1162519432}
@@ -1508,6 +1524,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 1
@@ -1671,6 +1689,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -1933,6 +1953,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -2349,6 +2371,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 3
@@ -2401,6 +2425,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -2713,6 +2739,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 4
@@ -2820,6 +2848,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -3428,6 +3458,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 5
@@ -3480,6 +3512,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -3707,6 +3741,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 12
@@ -3829,6 +3865,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -4080,6 +4118,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 11
@@ -4207,6 +4247,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -4351,6 +4393,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -4651,6 +4695,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -5100,6 +5146,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 1
@@ -5303,6 +5351,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 1
@@ -5356,6 +5406,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 11
@@ -5408,6 +5460,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -5574,6 +5628,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 12
@@ -5626,6 +5682,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -5680,6 +5738,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 1
@@ -5733,6 +5793,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 9
@@ -5785,6 +5847,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -5974,7 +6038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.54200006}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2.1290436}
+  m_AnchoredPosition: {x: 0, y: 2.1290512}
   m_SizeDelta: {x: 1920, y: -4.258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323447997
@@ -6139,6 +6203,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 6
@@ -6278,6 +6344,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 12
@@ -6330,6 +6398,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -6748,6 +6818,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 5
@@ -6800,6 +6872,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -7472,6 +7546,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -12786,6 +12862,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 10
@@ -12893,6 +12971,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -18500,6 +18580,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 5
@@ -18552,6 +18634,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -18661,6 +18745,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 2
@@ -18766,6 +18852,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -18919,6 +19007,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
@@ -19364,6 +19454,8 @@ MonoBehaviour:
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
     type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
+    type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
   Zone: 10
@@ -19416,6 +19508,8 @@ MonoBehaviour:
   _blueEnemy: {fileID: 8396829927898831888, guid: ae27fe84d8398c148829801c4db68d2f,
     type: 3}
   _orangeEnemy: {fileID: 2196940113890768661, guid: e05518638a1eb5f46883931b32974d4b,
+    type: 3}
+  _spawnEffectPrefab: {fileID: 5985952579585878426, guid: 3ccae7263d9b646169f62f8420c4b61d,
     type: 3}
   _waveGenerator: {fileID: 273699348}
   _spawnRadius: 7
