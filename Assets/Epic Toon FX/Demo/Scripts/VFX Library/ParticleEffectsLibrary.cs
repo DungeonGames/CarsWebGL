@@ -7,7 +7,7 @@ public class ParticleEffectsLibrary : MonoBehaviour {
 	void Awake () {
 		GlobalAccess = this;
 
-        currentActivePEList = new List<UnityEngine.Transform>();
+		currentActivePEList = new List<Transform> ();
 
 		TotalEffects = ParticleEffectPrefabs.Length;
 
@@ -39,7 +39,7 @@ public class ParticleEffectsLibrary : MonoBehaviour {
 	#pragma warning disable 414
 	private string effectNameString = "";
 	#pragma warning disable 414
-	private List<UnityEngine.Transform> currentActivePEList;
+	private List<Transform> currentActivePEList;
 
 	void Start () {
 	}

@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -7,14 +10,37 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject _blueEnemy;
     [SerializeField] private GameObject _orangeEnemy;
 
+    [SerializeField] private GameObject _spawnEffectPrefab;
+
     [SerializeField] private EnemyWaveContentGenerator _waveGenerator;
 
     [SerializeField] private float _spawnRadius = 7f;
 
+    private GameObject _spawnEffectInstance;
+
     public SpawnZone Zone = SpawnZone.FirstZone;
+
+    private void Start()
+    {
+        SetupSpawnEffect();
+    }
+
+
+    private void SetupSpawnEffect()
+    {
+        _spawnEffectInstance = Instantiate(_spawnEffectPrefab, transform);
+        Vector3 instancePosition = _spawnEffectInstance.transform.position;
+        float instanceYSize = _spawnEffectInstance.transform.localScale.y;
+        _spawnEffectInstance.transform.position = new Vector3(instancePosition.x,
+            instanceYSize, instancePosition.z);
+
+        _spawnEffectInstance.SetActive(false);
+    }
 
     public List<GameObject> SpawnPool(int spawnCount, int level, PlayerMover player)
     {
+        _spawnEffectInstance.SetActive(false);
+
         List<GameObject> spawned = new List<GameObject>();
         var wave = _waveGenerator.GenerateWave(spawnCount);
 
@@ -24,6 +50,11 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return spawned;
+    }
+
+    public void Highlight()
+    {
+        _spawnEffectInstance.SetActive(true);
     }
 
     private GameObject Spawn(EnemyToSpawn enemyToSpawn, int level, PlayerMover player)

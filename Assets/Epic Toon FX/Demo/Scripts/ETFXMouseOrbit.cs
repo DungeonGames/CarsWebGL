@@ -6,7 +6,7 @@ namespace EpicToonFX
 
 public class ETFXMouseOrbit : MonoBehaviour
 {
-    public UnityEngine.Transform target;
+    public Transform target;
     public float distance = 5.0f;
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
