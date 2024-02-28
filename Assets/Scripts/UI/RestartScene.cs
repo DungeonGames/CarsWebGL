@@ -1,10 +1,10 @@
 using UnityEngine;
-//using IJunior.TypedScenes;
+using UnityEngine.SceneManagement;
 
 public class RestartScene : MonoBehaviour
 {
     public void LoadScene()
     {
-       // GameScene.Load();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
