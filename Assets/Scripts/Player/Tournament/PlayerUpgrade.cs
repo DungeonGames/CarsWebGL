@@ -13,6 +13,10 @@ public class PlayerUpgrade : MonoBehaviour
 
     [SerializeField] private WavesManager _wavesManager;
 
+    public event Action<UpgradeType, float> OneStatUpgrade;
+    public event Action<float> BigUpgrade;
+    
+
     private void Start()
     {
         _wavesManager.MinorWaveEnded += MinorUpdate;
@@ -21,6 +25,7 @@ public class PlayerUpgrade : MonoBehaviour
 
     private void MinorUpdate()
     {
+        UpgradeType upgradeType = GetRandomUpgradeType();
         switch (GetRandomUpgradeType())
         {
             case UpgradeType.Damage:
@@ -33,6 +38,8 @@ public class PlayerUpgrade : MonoBehaviour
                 _movement.UpgradeSpeed(_minorUpdateCoef);
                 break;
         }
+        
+        OneStatUpgrade?.Invoke(upgradeType, _minorUpdateCoef);
     }
 
     private void MajorUpdate()
@@ -40,13 +47,8 @@ public class PlayerUpgrade : MonoBehaviour
         _currentGun.UpgradeDamage(_majorUpgradeCoef);
         _currentGun.UpgradeFireRate(_majorUpgradeCoef);
         _movement.UpgradeSpeed(_majorUpgradeCoef);
-    }
-
-    /// <summary>
-    /// For car or weapon model change
-    /// </summary>
-    private void UpdateModule()
-    {
+        
+        BigUpgrade?.Invoke(_majorUpgradeCoef);
     }
 
     private UpgradeType GetRandomUpgradeType()
@@ -57,7 +59,7 @@ public class PlayerUpgrade : MonoBehaviour
         return (UpgradeType)arr.GetValue(test);
     }
 
-    enum UpgradeType
+    public enum UpgradeType
     {
         Damage,
         FireRate,
