@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Lean.Localization;
 
 
 public class UpgradeView : MonoBehaviour
@@ -14,6 +15,10 @@ public class UpgradeView : MonoBehaviour
 
     [SerializeField] private UpgradeType _upgradeType;
 
+    private const string _reloadSpeed = "ReloadUpgrade";
+    private const string _damage = "DamageUpgrade";
+    private const string _speed = "SpeedUpgrade";
+    
     public void Setup(int upgradePercent, bool isMajor)
     {
         string upgradeName = String.Empty;
@@ -21,13 +26,13 @@ public class UpgradeView : MonoBehaviour
         switch (_upgradeType)
         {
             case UpgradeType.Speed:
-                upgradeName = "Скорость:";
+                upgradeName = LeanLocalization.GetTranslationText(_speed);
                 break;
             case UpgradeType.Damage:
-                upgradeName = "Урон:";
+                upgradeName = LeanLocalization.GetTranslationText(_damage);
                 break;
             case UpgradeType.ReloadSpeed:
-                upgradeName = "Перезарядка:";
+                upgradeName = LeanLocalization.GetTranslationText(_reloadSpeed);
                 break;
         }
 

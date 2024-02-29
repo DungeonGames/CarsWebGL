@@ -15,6 +15,9 @@ public class TournamentInfoView : MonoBehaviour
     [SerializeField] private WavesManager _wavesManager;
     [SerializeField] private EnemySpawnerController _spawner;
 
+    private const string _scoreToken = "Score";
+    private const string _waveToken = "Wave";
+    
     private bool _timerEnabled = false;
 
     private float _currentGameTime = 0;
@@ -39,7 +42,7 @@ public class TournamentInfoView : MonoBehaviour
     {
         _score++;
 
-        _killCountText.text = "Счёт: " + _score;
+        _killCountText.text = $"{LeanLocalization.GetTranslationText(_scoreToken)}: " + _score;
     }
 
     private void Update()
@@ -60,13 +63,13 @@ public class TournamentInfoView : MonoBehaviour
 
     private void InitUI()
     {
-        _waveText.text = "Волна: 1";
-        _killCountText.text = "Счёт: 0";
+        _waveText.text = $"{LeanLocalization.GetTranslationText(_waveToken)}: 1";
+        _killCountText.text = $"{LeanLocalization.GetTranslationText(_scoreToken)}: 0";
         _timer.text = "00:00";
     }
 
     private void UpdateWaveNumber()
     {
-        _waveText.text = "Волна: " + _wavesManager.CurrentWave;
+        _waveText.text = $"{LeanLocalization.GetTranslationText(_waveToken)}: " + _wavesManager.CurrentWave;
     }
 }
