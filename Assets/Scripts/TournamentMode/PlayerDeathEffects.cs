@@ -10,6 +10,8 @@ public class PlayerDeathEffects : MonoBehaviour
 
     [SerializeField] private Car _playerHealth;
 
+    private const string _explosionSound = "PlayerDeathExplosion";
+
     private void Start()
     {
         _playerHealth.Died += ShowDeathEffect;
@@ -23,5 +25,6 @@ public class PlayerDeathEffects : MonoBehaviour
         }
         
         _explosion.SetActive(true);
+        AudioResources.Instance.PlaySound(_explosionSound);
     }
 }

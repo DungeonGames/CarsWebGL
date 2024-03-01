@@ -58,8 +58,6 @@ public class PlayerUpgradeView : MonoBehaviour
                 break;
         }
         
-        Debug.Log(toUpgrade.Count);
-
         StartCoroutine(ShowUpgrade(toUpgrade));
     }
 

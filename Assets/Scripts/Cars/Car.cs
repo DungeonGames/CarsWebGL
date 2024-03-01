@@ -16,7 +16,7 @@ public class Car : MonoBehaviour
 
     private void Start()
     {
-        UpdateHealt();
+        UpdateHealth();
     }
 
     public void TakeDamage(float value)
@@ -35,7 +35,7 @@ public class Car : MonoBehaviour
         }
     }
 
-    private void UpdateHealt()
+    private void UpdateHealth()
     {
         _currentHealth = _health;
         _lowHealthValueTrigger = _health / 3;
