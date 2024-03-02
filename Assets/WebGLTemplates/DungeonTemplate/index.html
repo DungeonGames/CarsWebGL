@@ -59,6 +59,7 @@
       transform: translate(-50%, -50%);  
     }
   </style>
+  <script src="playDeckBridge.js"></script>
 </head>
 
 <body>
@@ -106,12 +107,15 @@
     var myGameInstance = null;
     var script = document.createElement("script");
     script.src = loaderUrl;
+    const playdeckBridgeInstance = playDeckBridge();
     script.onload = function() {
       createUnityInstance(canvas, config, function(progress) {
         progressBar.style.width = 100 * progress + "%";
+        playdeckBridgeInstance?.setLoadingProgress(progress * 100)
       }).then(function(unityInstance) {
         myGameInstance = unityInstance;
         dungeonLogo.style.display = "none";
+        playdeckBridgeInstance?.init(unityInstance);
       }).catch(function(message) {
         alert(message);
       });

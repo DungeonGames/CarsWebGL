@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Lean.Localization;
+using PlayDeck;
 using UnityEngine.Serialization;
 
 public class TournamentInfoView : MonoBehaviour
@@ -14,6 +15,7 @@ public class TournamentInfoView : MonoBehaviour
 
     [SerializeField] private WavesManager _wavesManager;
     [SerializeField] private EnemySpawnerController _spawner;
+    [SerializeField] private PlayDeckBridge _playDeckBridge;
 
     private const string _scoreToken = "Score";
     private const string _waveToken = "Wave";
@@ -41,6 +43,7 @@ public class TournamentInfoView : MonoBehaviour
     private void IncreaseScore(int arg1, int arg2)
     {
         _score++;
+        _playDeckBridge.SetScore(_score);
 
         _killCountText.text = $"{LeanLocalization.GetTranslationText(_scoreToken)}: " + _score;
     }
