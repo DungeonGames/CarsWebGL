@@ -38,7 +38,7 @@ public class Car : MonoBehaviour
     private void UpdateHealth()
     {
         _currentHealth = _health;
-        _lowHealthValueTrigger = _health / 3;
+        _lowHealthValueTrigger = _health / 5;
     }
 
     private bool CanDecreaseHealth(float value)

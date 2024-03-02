@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class EnemySpawnerController : MonoBehaviour
 {
     [SerializeField] private List<EnemySpawner> _startSpawners;
-    
+
     [SerializeField] private List<EnemySpawner> _spawners;
 
     [SerializeField] private PlayerMover _playerMover;
@@ -47,7 +47,7 @@ public class EnemySpawnerController : MonoBehaviour
         _spawnersToUse = new List<EnemySpawner>();
 
         _spawnersToUse = availableSpawners.OrderBy(x => Random.Range(0, Int32.MaxValue))
-            .Take(Random.Range(_lowerSpawnersBound, availableSpawners.Count)).ToList();
+            .Take(Random.Range(_lowerSpawnersBound, Mathf.CeilToInt((float)availableSpawners.Count / 2))).ToList();
 
         foreach (var spawner in _spawnersToUse)
         {
@@ -84,7 +84,7 @@ public class EnemySpawnerController : MonoBehaviour
 
     private List<EnemySpawner> GetAllAvailableSpawners()
     {
-        int currentWaveZone = (int)_wavesManager.BigStage;
+        int currentWaveZone = _wavesManager.BigStage;
 
         List<EnemySpawner> result = _spawners
             .Where(spawner => (int)spawner.Zone <= currentWaveZone)

@@ -91,8 +91,9 @@ public class Enemy : MonoBehaviour
 
     private float GetRealDamage()
     {
-        float damage = Random.Range(_damage * _lowerBoundStatsCoef, _damage * _upperBoundStatsCoef);
-
+        //float damage = Random.Range(_damage * _lowerBoundStatsCoef, _damage * _upperBoundStatsCoef);
+        float damage = _damage;
+        
         return damage;
     }
 
