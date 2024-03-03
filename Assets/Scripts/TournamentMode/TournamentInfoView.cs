@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameAnalyticsSDK;
 using UnityEngine;
 using TMPro;
 using Lean.Localization;
@@ -12,6 +13,7 @@ public class TournamentInfoView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _waveText;
     [SerializeField] private TextMeshProUGUI _killCountText;
     [SerializeField] private TextMeshProUGUI _timer;
+    [SerializeField] private GameUIHandler _gameUIHandler;
 
     [SerializeField] private WavesManager _wavesManager;
     [SerializeField] private EnemySpawnerController _spawner;
@@ -19,7 +21,7 @@ public class TournamentInfoView : MonoBehaviour
 
     private const string _scoreToken = "Score";
     private const string _waveToken = "Wave";
-    
+
     private bool _timerEnabled = false;
 
     private float _currentGameTime = 0;
@@ -38,12 +40,14 @@ public class TournamentInfoView : MonoBehaviour
         _wavesManager.WaveStarted += () => _timerEnabled = true;
 
         _spawner.EnemyCountChanged += IncreaseScore;
+        _gameUIHandler.GameEnd += OnGameEnded;
     }
 
     private void IncreaseScore(int arg1, int arg2)
     {
         _score++;
         _playDeckBridge.SetScore(_score);
+        GameAnalytics.NewDesignEvent("EnemyKilled", _score);
 
         _killCountText.text = $"{LeanLocalization.GetTranslationText(_scoreToken)}: " + _score;
     }
@@ -74,5 +78,10 @@ public class TournamentInfoView : MonoBehaviour
     private void UpdateWaveNumber()
     {
         _waveText.text = $"{LeanLocalization.GetTranslationText(_waveToken)}: " + _wavesManager.CurrentWave;
+    }
+
+    private void OnGameEnded()
+    {
+        GameAnalytics.NewDesignEvent("CountOfWavesThenPlayerDied", _wavesManager.CurrentWave);
     }
 }
