@@ -1474,6 +1474,7 @@ MonoBehaviour:
   _waveText: {fileID: 1799731463}
   _killCountText: {fileID: 976268397}
   _timer: {fileID: 1495131152}
+  _gameUIHandler: {fileID: 2038770360}
   _wavesManager: {fileID: 273699349}
   _spawner: {fileID: 273699350}
   _playDeckBridge: {fileID: 540609050}
