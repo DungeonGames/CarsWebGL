@@ -26,6 +26,7 @@ public class TournamentInfoView : MonoBehaviour
 
     private float _currentGameTime = 0;
     private int _score = 0;
+    private int _previousScore;
 
     private void Start()
     {
@@ -41,12 +42,20 @@ public class TournamentInfoView : MonoBehaviour
 
         _spawner.EnemyCountChanged += IncreaseScore;
         _gameUIHandler.GameEnd += OnGameEnded;
+
+        _playDeckBridge.GetScore(SetPreviousScore);
     }
+
+    private void SetPreviousScore(PlayDeckBridge.GetScoreData data) =>
+        _previousScore = data.score;
 
     private void IncreaseScore(int arg1, int arg2)
     {
         _score++;
-        _playDeckBridge.SetScore(_score);
+        
+        if (_score > _previousScore)
+            _playDeckBridge.SetScore(_score);
+        
         GameAnalytics.NewDesignEvent("EnemyKilled", _score);
 
         _killCountText.text = $"{LeanLocalization.GetTranslationText(_scoreToken)}: " + _score;
