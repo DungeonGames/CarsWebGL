@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using GameAnalyticsSDK;
 using UnityEngine;
 using TMPro;
 using Lean.Localization;
 using PlayDeck;
-using UnityEngine.Serialization;
 
 public class TournamentInfoView : MonoBehaviour
 {
@@ -52,10 +49,7 @@ public class TournamentInfoView : MonoBehaviour
     private void IncreaseScore(int arg1, int arg2)
     {
         _score++;
-        
-        if (_score > _previousScore)
-            _playDeckBridge.SetScore(_score);
-        
+
         GameAnalytics.NewDesignEvent("EnemyKilled", _score);
 
         _killCountText.text = $"{LeanLocalization.GetTranslationText(_scoreToken)}: " + _score;
@@ -91,6 +85,9 @@ public class TournamentInfoView : MonoBehaviour
 
     private void OnGameEnded()
     {
+        if (_score > _previousScore)
+            _playDeckBridge.SetScore(_score);
+        
         GameAnalytics.NewDesignEvent("CountOfWavesThenPlayerDied", _wavesManager.CurrentWave);
     }
 }
