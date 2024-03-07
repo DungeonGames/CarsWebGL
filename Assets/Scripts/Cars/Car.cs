@@ -35,6 +35,21 @@ public class Car : MonoBehaviour
         }
     }
 
+    public void Heal(float healPercent)
+    {
+        healPercent -= 1;
+
+        if (healPercent < 0)
+        {
+            Debug.LogError("Heal Percent Cannot Be Negative!");
+        }
+        
+        _currentHealth += healPercent * _health;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _health);
+        
+        HealtChange?.Invoke(_currentHealth, _health);
+    }
+
     private void UpdateHealth()
     {
         _currentHealth = _health;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -86,6 +87,17 @@ public class Enemy : MonoBehaviour
         {
             Discard();
             car.TakeDamage(GetRealDamage());
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out OutOfBoundZone killZone))
+        {
+            _isAlive = false;
+            FindObjectOfType<EnemySpawnerController>().RemoveFromPool(gameObject);
+            PrepareToDie?.Invoke(this);
+            _boid.enabled = false;
         }
     }
 

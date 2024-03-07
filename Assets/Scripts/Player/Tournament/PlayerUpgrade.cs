@@ -8,6 +8,7 @@ public class PlayerUpgrade : MonoBehaviour
 {
     [SerializeField] private PlayerMover _movement;
     [SerializeField] private Gun _currentGun;
+    [SerializeField] private Car _currentCar;
     [SerializeField] private float _minorUpdateCoef = 1.01f;
     [SerializeField] private float _majorUpgradeCoef = 1.1f;
 
@@ -47,6 +48,7 @@ public class PlayerUpgrade : MonoBehaviour
         _currentGun.UpgradeDamage(_majorUpgradeCoef);
         _currentGun.UpgradeFireRate(_majorUpgradeCoef);
         _movement.UpgradeSpeed(_majorUpgradeCoef);
+        _currentCar.Heal(_majorUpgradeCoef);
         
         BigUpgrade?.Invoke(_majorUpgradeCoef);
     }
@@ -63,6 +65,7 @@ public class PlayerUpgrade : MonoBehaviour
     {
         Damage,
         FireRate,
-        MoveSpeed
+        MoveSpeed,
+        Heal
     }
 }
