@@ -45,7 +45,7 @@ public class PlayerMover : MonoBehaviour
     {
         _direction.Set(direction.x, 0, direction.y);
         Vector3 offset = _direction.normalized * Time.deltaTime * _speed;
-        _rigidbody.velocity = offset;
+        _rigidbody.linearVelocity = offset;
 
         if (_direction != Vector3.zero)
         {
@@ -58,7 +58,7 @@ public class PlayerMover : MonoBehaviour
     private void OnKeyboardDrive(Vector2 direction)
     {
         direction.y *= direction.y > 0 ? _speed : _speed;
-        _rigidbody.velocity = transform.forward.normalized * direction.y * Time.deltaTime;
+        _rigidbody.linearVelocity = transform.forward.normalized * direction.y * Time.deltaTime;
         float newRotation = direction.x * _rotationSpeedKeyboard * Time.deltaTime;
         transform.Rotate(0, newRotation, 0, Space.Self);
     }
