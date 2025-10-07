@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using DungeonGames.VKGames;
 
 public class Social : MonoBehaviour
 {
@@ -67,12 +68,13 @@ public class Social : MonoBehaviour
 
     public void OnJoinButtonCkick()
     {
-        Agava.VKGames.Community.InviteToIJuniorGroup(JoinSucces);
+        
+        DungeonGames.VKGames.Community.InviteToDungeonGamesGroup(JoinSucces);
     }
 
     public void OnInviteButtonClick()
     {
-        Agava.VKGames.SocialInteraction.InviteFriends();
+        DungeonGames.VKGames.SocialInteraction.InviteFriends();
     }
 
     private void OnJoinGroup()

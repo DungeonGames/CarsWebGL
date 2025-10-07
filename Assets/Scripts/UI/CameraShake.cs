@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
-using Cinemachine;
 
 [RequireComponent(typeof(CinemachineVirtualCamera))]
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] private NoiseSettings _noiseSettings;
-
+    [SerializeField] private float _timeRemaining;
+    [SerializeField] private float _shakeDuration = 0.3f;
+    [SerializeField] private float _shakeAmplitude = 1.0f; // настройка амплитуды
+    [SerializeField] private float _shakeFrequency = 10f; // настройка частоты
+    
     private CinemachineVirtualCamera _virtualCamera;
     private CinemachineBasicMultiChannelPerlin _channelPerlin;
-    [SerializeField] private float _timeRemaining;
+    
     private float _shakeTime = 0.3f;
     private bool _isShake = false; 
 
@@ -23,17 +25,17 @@ public class CameraShake : MonoBehaviour
 
     private void Update()
     {
-        if (_isShake)
-        {
-            if(_timeRemaining > 0)
-            {
-                SetNoise();
-            }
-            else
-            {
-                SetDefaultNoise();
-            }
-        }
+        // if (_isShake)
+        // {
+        //     if(_timeRemaining > 0)
+        //     {
+        //         SetNoise();
+        //     }
+        //     else
+        //     {
+        //         SetDefaultNoise();
+        //     }
+        // }
     }
 
     public void Shake()
@@ -41,16 +43,16 @@ public class CameraShake : MonoBehaviour
         _isShake = true;
     }
 
-    private void SetNoise()
-    {
-        _channelPerlin.m_NoiseProfile = _noiseSettings;
-        _timeRemaining -= Time.deltaTime;
-    }
-
-    private void SetDefaultNoise()
-    {
-        _isShake = false;
-        _channelPerlin.m_NoiseProfile = null;
-        _timeRemaining = _shakeTime;
-    }
+    // private void SetNoise()
+    // {
+    //     _channelPerlin.m_NoiseProfile = _noiseSettings;
+    //     _timeRemaining -= Time.deltaTime;
+    // }
+    //
+    // private void SetDefaultNoise()
+    // {
+    //     _isShake = false;
+    //     _channelPerlin.m_NoiseProfile = null;
+    //     _timeRemaining = _shakeTime;
+    // }
 }

@@ -1,4 +1,3 @@
-using Agava.YandexGames;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -20,7 +19,7 @@ public class VideoAdButton : MonoBehaviour
 #endif
 
 #if VK_GAMES
-        Agava.VKGames.VideoAd.Show(OnVKCallback);
+        DungeonGames.VKGames.VideoAd.Show(OnVKCallback);
         OnOpenVideo();
 #endif
     }

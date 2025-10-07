@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DungeonGames.VKGames;
 
 public class InitializeSDK : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class InitializeSDK : MonoBehaviour
 
 #elif VK_GAMES
             
-        yield return Agava.VKGames.VKGamesSdk.Initialize(Initialized);
+        yield return VKGamesSdk.Initialize(Initialized);
         
 #endif
 

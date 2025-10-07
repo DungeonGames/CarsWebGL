@@ -1,4 +1,3 @@
-using Agava.YandexGames;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -95,7 +94,7 @@ public class GameUiHandler : MonoBehaviour
 #endif
 
 #if VK_GAMES
-        Agava.VKGames.Interstitial.Show();
+        DungeonGames.VKGames.Interstitial.Show();
 #endif
         Time.timeScale = 0;
         _inGameUI.gameObject.SetActive(false);

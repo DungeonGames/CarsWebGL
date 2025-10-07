@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Lean.Common;
 using CW.Common;
+using System.Linq;
 
 namespace Lean.Localization
 {
@@ -550,6 +551,81 @@ namespace Lean.Localization
 				currentLanguage = defaultLanguage;
 			}
 		}
+
+#if UNITY_EDITOR
+		/// <summary>This exports all text phrases in the LeanLocalization component for the Language specified by this component.</summary>
+		[ContextMenu("Export CurrentLanguage To CSV (Comma Format)")]
+		private void ExportTextAsset()
+		{
+			if (string.IsNullOrEmpty(currentLanguage) == false)
+			{
+				// Find where we want to save the file
+				var path = UnityEditor.EditorUtility.SaveFilePanelInProject("Export Text Asset for " + currentLanguage, currentLanguage, "csv", "");
+
+				// Make sure we didn't cancel the panel
+				if (string.IsNullOrEmpty(path) == false)
+				{
+					DoExportTextAsset(path);
+				}
+			}
+		}
+
+		private void DoExportTextAsset(string path)
+		{
+			var data = "";
+			var gaps = false;
+
+			// Add all phrase names and existing translations to lines
+			foreach (var pair in CurrentTranslations)
+			{
+				var translation = pair.Value;
+
+				if (gaps == true)
+				{
+					data += System.Environment.NewLine;
+				}
+
+				data += pair.Key + ",\"";
+				gaps  = true;
+
+				if (translation.Data is string)
+				{
+					var text = (string)translation.Data;
+
+					// Replace all new line permutations with the new line token
+					text = text.Replace("\r\n", "\n");
+					text = text.Replace("\n\r", "\n");
+					text = text.Replace("\r", "\n");
+
+					data += text;
+				}
+
+				data += "\"";
+			}
+
+			// Write text to file
+			using (var file = System.IO.File.OpenWrite(path))
+			{
+				var encoding = new System.Text.UTF8Encoding();
+				var bytes    = encoding.GetBytes(data);
+
+				file.Write(bytes, 0, bytes.Length);
+			}
+
+			// Import asset into project
+			UnityEditor.AssetDatabase.ImportAsset(path);
+
+			// Replace Source with new Text Asset?
+			var textAsset = (TextAsset)UnityEditor.AssetDatabase.LoadAssetAtPath(path, typeof(TextAsset));
+
+			if (textAsset != null)
+			{
+				UnityEditor.EditorGUIUtility.PingObject(textAsset);
+
+				UnityEditor.EditorUtility.SetDirty(this);
+			}
+		}
+#endif
 	}
 }
 
@@ -852,18 +928,55 @@ namespace Lean.Localization.Editor
 			var rectC = rectA; rectC.xMin = rectC.xMax - 35.0f;
 			EditorGUI.LabelField(rectA, "Languages", EditorStyles.boldLabel);
 			languagesFilter = EditorGUI.TextField(rectB, "", languagesFilter);
-			BeginDisabled(string.IsNullOrEmpty(languagesFilter) == true || LeanLocalization.CurrentLanguages.ContainsKey(languagesFilter) == true);
+			//BeginDisabled(string.IsNullOrEmpty(languagesFilter) == true || LeanLocalization.CurrentLanguages.ContainsKey(languagesFilter) == true);
 				if (GUI.Button(rectC, "Add", EditorStyles.miniButton) == true)
 				{
-					var language = LeanLocalization.AddLanguageToFirst(languagesFilter);
+					if (string.IsNullOrEmpty(languagesFilter) == true)
+					{
+						var menu = new GenericMenu();
 
-					LeanLocalization.UpdateTranslations();
+						var languagePrefabs = AssetDatabase.FindAssets("t:GameObject").
+							Select((guid) => AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid))).
+							Where((prefab) => prefab.GetComponent<LeanLanguage>() != null);
+						
+						foreach (var languagePrefab in languagePrefabs)
+						{
+							if (LeanLocalization.CurrentLanguages.ContainsKey(languagePrefab.name) == true)
+							{
+								menu.AddItem(new GUIContent(languagePrefab.name), true, () => {});
+							}
+							else
+							{
+								menu.AddItem(new GUIContent(languagePrefab.name), false, () =>
+									{
+										if (LeanLocalization.Instances.Count > 0)
+										{
+											var language = UnityEditor.PrefabUtility.InstantiatePrefab(languagePrefab, LeanLocalization.Instances[0].transform);
 
-					Selection.activeObject = language;
+											LeanLocalization.UpdateTranslations();
 
-					EditorGUIUtility.PingObject(language);
+											Selection.activeObject = language;
+
+											EditorGUIUtility.PingObject(language);
+										}
+									});
+							}
+						}
+
+						menu.ShowAsContext();
+					}
+					else
+					{
+						var language = LeanLocalization.AddLanguageToFirst(languagesFilter);
+
+						LeanLocalization.UpdateTranslations();
+
+						Selection.activeObject = language;
+
+						EditorGUIUtility.PingObject(language);
+					}
 				}
-			EndDisabled();
+			//EndDisabled();
 
 			if (LeanLocalization.CurrentLanguages.Count > 0 || string.IsNullOrEmpty(languagesFilter) == false)
 			{

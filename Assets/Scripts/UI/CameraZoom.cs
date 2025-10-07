@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 
 [RequireComponent(typeof(CinemachineVirtualCamera))]
 public class CameraZoom : MonoBehaviour

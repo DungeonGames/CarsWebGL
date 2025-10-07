@@ -1,5 +1,4 @@
 using UnityEngine;
-using Agava.YandexGames;
 using Lean.Localization;
 
 public class LanguageChanger : MonoBehaviour

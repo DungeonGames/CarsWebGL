@@ -1,6 +1,4 @@
-using Agava.YandexGames;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class YandexLeaderboard : MonoBehaviour
 {
